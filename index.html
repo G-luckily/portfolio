@@ -144,50 +144,49 @@
     <div id="cover-page" class="fixed inset-0 z-[100] bg-slate-900 text-white flex flex-col md:flex-row overflow-hidden">
         
         <!-- Language Toggle (Cover) -->
-        <div class="absolute top-8 right-8 z-50">
-             <button onclick="toggleLanguage()" class="border border-white/30 px-4 py-2 rounded-full text-sm hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">EN / 中</button>
+        <div class="absolute top-6 right-6 z-50">
+             <button onclick="toggleLanguage()" class="border border-white/30 px-3 py-1.5 rounded-full text-xs hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">EN / 中</button>
         </div>
 
         <!-- Left: Navigation & Title -->
-        <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-20 flex flex-col justify-center relative z-10 bg-gradient-to-br from-slate-900 to-zju-dark">
+        <div class="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative z-10 bg-gradient-to-br from-slate-900 to-zju-dark">
             <div class="space-y-2">
                 <!-- Modified: Changed to specific description instead of generic title -->
-                <p class="text-amber-500 tracking-[0.2em] text-xs font-bold mb-4" data-i18n="portfolio_label">ACADEMIC & PROFESSIONAL PORTFOLIO</p>
-                <!-- Horizontal Chinese Name -->
-                <h1 id="cover-name" class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight mb-2 transition-all duration-300" data-i18n="name_br">
+                <p class="text-amber-500 tracking-[0.2em] text-[10px] md:text-xs font-bold mb-2" data-i18n="portfolio_label">ACADEMIC & PROFESSIONAL PORTFOLIO</p>
+                <!-- Horizontal Chinese Name - Reduced font size for better fit -->
+                <h1 id="cover-name" class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-2 transition-all duration-300" data-i18n="name_br">
                     GUO<br>LIN<br>FENG
                 </h1>
-                <p class="text-slate-400 mt-6 text-lg font-light italic border-l-2 border-amber-500 pl-4 max-w-md" data-i18n="quote">
+                <p class="text-slate-400 mt-4 text-base md:text-lg font-light italic border-l-2 border-amber-500 pl-4 max-w-md" data-i18n="quote">
                     "Dedication to Public Value & Social Innovation"
                 </p>
             </div>
 
-            <nav class="space-y-4 mt-12">
-                <!-- Menu Items -->
+            <nav class="space-y-3 mt-8 md:mt-12">
+                <!-- Menu Items - Reduced font size -->
                 <div onclick="enterPortfolio('education-anchor')" class="group cursor-pointer">
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-4">
-                        <span class="text-amber-600/50 text-sm font-sans font-bold w-6">01</span> <span data-i18n="nav_edu">Education</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-sm transition-all -translate-x-4 group-hover:translate-x-0"></i>
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
+                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">01</span> <span data-i18n="nav_edu">Education</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
                     </h2>
                 </div>
-                <!-- Swapped Order: Leadership is now 02 -->
                 <div onclick="enterPortfolio('leadership')" class="group cursor-pointer">
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-4">
-                        <span class="text-amber-600/50 text-sm font-sans font-bold w-6">02</span> <span data-i18n="nav_lead">Leadership</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-sm transition-all -translate-x-4 group-hover:translate-x-0"></i>
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
+                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">02</span> <span data-i18n="nav_lead">Leadership</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
                     </h2>
                 </div>
                 <div onclick="enterPortfolio('internships')" class="group cursor-pointer">
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-4">
-                        <span class="text-amber-600/50 text-sm font-sans font-bold w-6">03</span> <span data-i18n="nav_exp">Experience</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-sm transition-all -translate-x-4 group-hover:translate-x-0"></i>
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
+                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">03</span> <span data-i18n="nav_exp">Experience</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
                     </h2>
                 </div>
                 <div onclick="enterPortfolio('research')" class="group cursor-pointer">
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-4">
-                        <span class="text-amber-600/50 text-sm font-sans font-bold w-6">04</span> <span data-i18n="nav_res">Research</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-sm transition-all -translate-x-4 group-hover:translate-x-0"></i>
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
+                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">04</span> <span data-i18n="nav_res">Research</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
                     </h2>
                 </div>
                 <div onclick="enterPortfolio('social-practice')" class="group cursor-pointer">
-                    <h2 class="text-xl md:text-2xl lg:text-3xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-4">
-                        <span class="text-amber-600/50 text-sm font-sans font-bold w-6">05</span> <span data-i18n="nav_soc">Social Practice</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-sm transition-all -translate-x-4 group-hover:translate-x-0"></i>
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
+                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">05</span> <span data-i18n="nav_soc">Social Practice</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
                     </h2>
                 </div>
             </nav>
@@ -207,7 +206,8 @@
                 <div class="relative inline-block group cursor-default">
                     <!-- Breathing Glow Effect (Color Breathing) -->
                     <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-blue-400 rounded-full opacity-60 blur-md group-hover:opacity-80 transition duration-500 animate-breathe"></div>
-                    <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=D97706&color=fff&size=512'" class="relative w-56 h-56 lg:w-72 lg:h-72 rounded-full border-4 border-white/20 object-cover shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
+                    <!-- Reduced image size for better fit -->
+                    <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=D97706&color=fff&size=512'" class="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full border-4 border-white/20 object-cover shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
                     
                     <!-- Floating Badge -->
                     <div class="absolute -right-4 bottom-4 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
@@ -217,10 +217,10 @@
                 </div>
             </div>
 
-            <div class="absolute bottom-12 left-0 right-0 text-center text-white/60 px-8">
+            <div class="absolute bottom-8 left-0 right-0 text-center text-white/60 px-8">
                 <div class="flex justify-center gap-4">
-                    <span class="px-3 py-1 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">Policy Analysis</span>
-                    <span class="px-3 py-1 border border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">HR Strategy</span>
+                    <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">Policy Analysis</span>
+                    <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">HR Strategy</span>
                 </div>
             </div>
         </div>
@@ -232,16 +232,16 @@
         <!-- Fixed Navbar -->
         <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-16">
+                <div class="flex justify-between items-center h-14"> <!-- Reduced height -->
                     <div class="flex items-center gap-4">
-                        <button onclick="showCover()" class="text-gray-500 hover:text-zju-blue transition-colors flex items-center gap-2 text-sm font-bold uppercase tracking-wider border-r border-gray-200 pr-4">
+                        <button onclick="showCover()" class="text-gray-500 hover:text-zju-blue transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-wider border-r border-gray-200 pr-4">
                             <i class="fa-solid fa-bars"></i> <span data-i18n="menu_btn">Menu</span>
                         </button>
-                        <span class="text-xl font-serif font-bold text-zju-blue tracking-wide" data-i18n="name_simple">GUO LINFENG</span>
+                        <span class="text-lg font-serif font-bold text-zju-blue tracking-wide" data-i18n="name_simple">GUO LINFENG</span>
                     </div>
                     
                     <div class="flex items-center gap-4">
-                         <div class="hidden md:flex space-x-6 items-center text-sm font-medium">
+                         <div class="hidden md:flex space-x-6 items-center text-xs font-medium">
                             <!-- Reordered Navigation Links -->
                             <a href="#education-anchor" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_edu">Education</a>
                             <a href="#leadership" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_lead">Leadership</a>
@@ -255,89 +255,89 @@
         </nav>
 
         <!-- Hero Summary (Attached to Education for Scroll Logic) -->
-        <div id="education-anchor" class="pt-28"></div>
-        <section class="pb-12 px-4 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=003F88&color=fff'" class="w-32 h-32 rounded-full border-4 border-white shadow-lg">
+        <div id="education-anchor" class="pt-20"></div> <!-- Reduced pt -->
+        <section class="pb-8 px-4 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=003F88&color=fff'" class="w-24 h-24 rounded-full border-4 border-white shadow-lg"> <!-- Reduced size -->
                 <div>
-                    <h1 class="text-4xl font-serif font-bold text-gray-900 mb-2" data-i18n="hero_name">郭林峰</h1>
-                    <p class="text-gray-600" data-i18n="hero_title">浙江大学 公共管理学院 | 2024级硕士研究生</p>
-                    <div class="mt-4 flex gap-3 flex-wrap">
-                        <span class="competency-tag text-xs" data-i18n="tag_exec">⚡ 执行力 Max</span>
-                        <span class="competency-tag text-xs" data-i18n="tag_acad">📚 学术严谨</span>
-                        <span class="competency-tag text-xs" data-i18n="tag_lead">🤝 组织领导力</span>
+                    <h1 class="text-3xl font-serif font-bold text-gray-900 mb-1" data-i18n="hero_name">郭林峰</h1>
+                    <p class="text-gray-600 text-sm" data-i18n="hero_title">浙江大学 公共管理学院 | 2024级硕士研究生</p>
+                    <div class="mt-3 flex gap-3 flex-wrap">
+                        <span class="competency-tag text-[10px]" data-i18n="tag_exec">⚡ 执行力 Max</span>
+                        <span class="competency-tag text-[10px]" data-i18n="tag_acad">📚 学术严谨</span>
+                        <span class="competency-tag text-[10px]" data-i18n="tag_lead">🤝 组织领导力</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Education Section (Enhanced Colors) -->
-        <section id="education" class="py-12 relative overflow-hidden reveal">
+        <section id="education" class="py-12 relative overflow-hidden reveal"> <!-- Reduced py -->
             <!-- Background Decor -->
             <div class="absolute inset-0 bg-dots opacity-20 -z-10"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-blue-100/50 via-blue-50/20 to-white -z-10"></div>
             <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-green-50/40 to-transparent -z-10"></div>
 
             <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-12">
-                    <div class="w-1 h-12 bg-zju-blue rounded-full"></div>
+                <div class="flex items-center gap-4 mb-8"> <!-- Reduced margin -->
+                    <div class="w-1 h-10 bg-zju-blue rounded-full"></div>
                     <div>
-                        <h2 class="text-4xl font-serif font-bold text-gray-900" data-i18n="sec_edu_title">教育背景</h2>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_edu_sub">Academic Excellence</p>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_edu_title">教育背景</h2>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_edu_sub">Academic Excellence</p>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-6"> <!-- Reduced gap -->
                     <!-- ZJU (Blue Theme) -->
-                    <div class="bg-white/90 backdrop-blur p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-zju-blue group border border-white flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-6">
+                    <div class="bg-white/90 backdrop-blur p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-zju-blue group border border-white flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-zju-blue text-white rounded-full flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <div class="w-10 h-10 bg-zju-blue text-white rounded-full flex items-center justify-center text-lg shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap"></i></div>
                                 <div>
-                                    <a href="https://www.zju.edu.cn" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-zju-blue hover-link block">
+                                    <a href="https://www.zju.edu.cn" target="_blank" class="text-xl font-bold text-gray-900 hover:text-zju-blue hover-link block">
                                         <span data-i18n="zju_name">浙江大学</span>
                                     </a>
-                                    <span class="text-xs text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_hz">杭州 Hangzhou</span></span>
+                                    <span class="text-[10px] text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_hz">杭州 Hangzhou</span></span>
                                 </div>
                             </div>
-                            <span class="text-sm bg-zju-light text-zju-blue px-3 py-1 rounded-full font-bold">2024 - 2027</span>
+                            <span class="text-xs bg-zju-light text-zju-blue px-2 py-1 rounded-full font-bold">2024 - 2027</span>
                         </div>
-                        <p class="text-gray-700 mb-6 font-medium" data-i18n="zju_major">公共管理学院 | 社会工作硕士</p>
-                        <div class="mt-auto bg-slate-50 p-4 rounded-xl border border-gray-100">
+                        <p class="text-gray-700 mb-4 text-sm font-medium" data-i18n="zju_major">公共管理学院 | 社会工作硕士</p>
+                        <div class="mt-auto bg-slate-50 p-3 rounded-xl border border-gray-100">
                             <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
-                                <span class="font-semibold text-sm text-gray-500" data-i18n="rank_label">专业排名</span>
-                                <span class="text-zju-blue font-bold">3/30</span>
+                                <span class="font-semibold text-xs text-gray-500" data-i18n="rank_label">专业排名</span>
+                                <span class="text-zju-blue font-bold text-sm">3/30</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="font-semibold text-sm text-gray-500" data-i18n="score_label">加权平均分</span>
-                                <span class="text-gray-900 font-bold">92.69</span>
+                                <span class="font-semibold text-xs text-gray-500" data-i18n="score_label">加权平均分</span>
+                                <span class="text-gray-900 font-bold text-sm">92.69</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- HUST (Green Theme - Explicit Request) -->
-                    <div class="bg-white/90 backdrop-blur p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-hust-green group border border-white flex flex-col h-full">
-                         <div class="flex justify-between items-start mb-6">
+                    <div class="bg-white/90 backdrop-blur p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-hust-green group border border-white flex flex-col h-full">
+                         <div class="flex justify-between items-start mb-4">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-hust-green text-white rounded-full flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-tree"></i></div>
+                                <div class="w-10 h-10 bg-hust-green text-white rounded-full flex items-center justify-center text-lg shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-tree"></i></div>
                                 <div>
-                                    <a href="https://www.hust.edu.cn" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-hust-green hover-link block">
+                                    <a href="https://www.hust.edu.cn" target="_blank" class="text-xl font-bold text-gray-900 hover:text-hust-green hover-link block">
                                         <span data-i18n="hust_name">华中科技大学</span>
                                     </a>
-                                    <span class="text-xs text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_wh">武汉 Wuhan</span></span>
+                                    <span class="text-[10px] text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_wh">武汉 Wuhan</span></span>
                                 </div>
                             </div>
-                            <span class="text-sm bg-hust-light text-hust-green px-3 py-1 rounded-full font-bold">2020 - 2024</span>
+                            <span class="text-xs bg-hust-light text-hust-green px-2 py-1 rounded-full font-bold">2020 - 2024</span>
                         </div>
-                        <p class="text-gray-700 mb-6 font-medium" data-i18n="hust_major">社会学院 (主修) & 经济学院 (双学位)</p>
-                        <div class="mt-auto bg-slate-50 p-4 rounded-xl border border-gray-100">
+                        <p class="text-gray-700 mb-4 text-sm font-medium" data-i18n="hust_major">社会学院 (主修) & 经济学院 (双学位)</p>
+                        <div class="mt-auto bg-slate-50 p-3 rounded-xl border border-gray-100">
                             <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
-                                <span class="font-semibold text-sm text-gray-500" data-i18n="rank_label">专业排名</span>
-                                <span class="text-hust-green font-bold">2/19</span>
+                                <span class="font-semibold text-xs text-gray-500" data-i18n="rank_label">专业排名</span>
+                                <span class="text-hust-green font-bold text-sm">2/19</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="font-semibold text-sm text-gray-500">GPA</span>
-                                <span class="text-gray-900 font-bold">3.93/4.00</span>
+                                <span class="font-semibold text-xs text-gray-500">GPA</span>
+                                <span class="text-gray-900 font-bold text-sm">3.93/4.00</span>
                             </div>
                         </div>
                     </div>
@@ -346,62 +346,62 @@
         </section>
 
         <!-- Leadership Section (Indigo/Gray Tint) -->
-        <section id="leadership" class="py-20 bg-slate-50/80 relative reveal">
+        <section id="leadership" class="py-16 bg-slate-50/80 relative reveal">
              <!-- Decor -->
              <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#9ca3af_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
              <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/40 to-transparent -z-10"></div>
              
             <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="grid md:grid-cols-3 gap-12">
+                <div class="grid md:grid-cols-3 gap-8">
                     <!-- Student Leadership -->
                     <div class="md:col-span-2">
-                        <div class="flex items-center gap-4 mb-10">
-                            <div class="w-1 h-12 bg-slate-800 rounded-full"></div>
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-1 h-10 bg-slate-800 rounded-full"></div>
                             <div>
-                                <h2 class="text-4xl font-serif font-bold text-gray-900" data-i18n="sec_lead_title">学生工作</h2>
-                                <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-bold">Organization & Impact</p>
+                                <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_lead_title">学生工作</h2>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">Organization & Impact</p>
                             </div>
                         </div>
                         
-                        <div class="relative pl-8 border-l-2 border-gray-200 space-y-12">
+                        <div class="relative pl-6 border-l-2 border-gray-200 space-y-10">
                             <!-- ZJU -->
                             <div class="relative group">
-                                <div class="absolute -left-[41px] bg-zju-blue w-6 h-6 rounded-full border-4 border-white shadow-md group-hover:scale-110 transition-transform"></div>
-                                <h4 class="font-bold text-2xl text-zju-blue mb-6" data-i18n="lead_zju_title">浙江大学阶段</h4>
-                                <div class="grid sm:grid-cols-2 gap-5">
-                                    <div class="bg-white p-5 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900" data-i18n="role_zju_1">研究生团总支组织部副部长</p>
-                                        <p class="text-xs text-gray-400 mt-1">2024.09 - 2025.09</p>
+                                <div class="absolute -left-[33px] bg-zju-blue w-4 h-4 rounded-full border-2 border-white shadow-md group-hover:scale-110 transition-transform"></div>
+                                <h4 class="font-bold text-xl text-zju-blue mb-4" data-i18n="lead_zju_title">浙江大学阶段</h4>
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
+                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_1">研究生团总支组织部副部长</p>
+                                        <p class="text-[10px] text-gray-400 mt-1">2024.09 - 2025.09</p>
                                     </div>
-                                    <div class="bg-white p-5 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900" data-i18n="role_zju_2">丹青学园兼职辅导员</p>
-                                        <p class="text-xs text-gray-400 mt-1">2025.10 - 2026.10</p>
+                                    <div class="bg-white p-4 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
+                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_2">丹青学园兼职辅导员</p>
+                                        <p class="text-[10px] text-gray-400 mt-1">2025.10 - 2026.10</p>
                                     </div>
-                                    <div class="bg-white p-5 rounded-xl border border-gray-200 sm:col-span-2 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900" data-i18n="role_zju_3">社工研究生党支部组织委员</p>
-                                        <p class="text-xs text-gray-400 mt-1">2024.10 - 2025.10</p>
+                                    <div class="bg-white p-4 rounded-xl border border-gray-200 sm:col-span-2 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
+                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_3">社工研究生党支部组织委员</p>
+                                        <p class="text-[10px] text-gray-400 mt-1">2024.10 - 2025.10</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- HUST -->
                             <div class="relative group">
-                                <div class="absolute -left-[41px] bg-gray-400 w-6 h-6 rounded-full border-4 border-white shadow-md group-hover:scale-110 transition-transform"></div>
-                                <h4 class="font-bold text-2xl text-gray-600 mb-6" data-i18n="lead_hust_title">华中科技大学阶段</h4>
-                                <div class="space-y-5">
-                                    <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:border-amber-300 transition-colors">
+                                <div class="absolute -left-[33px] bg-gray-400 w-4 h-4 rounded-full border-2 border-white shadow-md group-hover:scale-110 transition-transform"></div>
+                                <h4 class="font-bold text-xl text-gray-600 mb-4" data-i18n="lead_hust_title">华中科技大学阶段</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-amber-300 transition-colors">
                                         <div class="flex justify-between items-start">
-                                            <p class="font-bold text-gray-900 text-lg" data-i18n="role_hust_1">英语协会会长</p>
-                                            <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded font-bold">五星社团</span>
+                                            <p class="font-bold text-gray-900 text-sm" data-i18n="role_hust_1">英语协会会长</p>
+                                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">五星社团</span>
                                         </div>
-                                        <p class="text-sm text-gray-600 mt-2" data-i18n="role_hust_1_d">带领团队获年度最高荣誉，个人获“优秀社团负责人”。</p>
+                                        <p class="text-xs text-gray-600 mt-1" data-i18n="role_hust_1_d">带领团队获年度最高荣誉，个人获“优秀社团负责人”。</p>
                                     </div>
-                                    <div class="bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:border-red-300 transition-colors">
+                                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-red-300 transition-colors">
                                          <div class="flex justify-between items-start">
-                                            <p class="font-bold text-gray-900 text-lg" data-i18n="role_hust_2">本科生党支部书记</p>
-                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-bold">样板党支部</span>
+                                            <p class="font-bold text-gray-900 text-sm" data-i18n="role_hust_2">本科生党支部书记</p>
+                                            <span class="text-[10px] bg-red-100 text-red-800 px-2 py-0.5 rounded font-bold">样板党支部</span>
                                         </div>
-                                        <p class="text-sm text-gray-600 mt-2" data-i18n="role_hust_2_d">支部荣获年度最高荣誉“本科生样板党支部”。</p>
+                                        <p class="text-xs text-gray-600 mt-1" data-i18n="role_hust_2_d">支部荣获年度最高荣誉“本科生样板党支部”。</p>
                                     </div>
                                 </div>
                             </div>
@@ -410,49 +410,49 @@
 
                     <!-- Social Practice (Dark Card) -->
                     <div id="social-practice" class="md:col-span-1">
-                        <div class="bg-gradient-to-b from-slate-900 to-zju-blue rounded-3xl p-8 text-white shadow-2xl h-full relative overflow-hidden flex flex-col justify-between border border-slate-700">
+                        <div class="bg-gradient-to-b from-slate-900 to-zju-blue rounded-2xl p-6 text-white shadow-2xl h-full relative overflow-hidden flex flex-col justify-between border border-slate-700">
                             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                             <div class="relative z-10">
-                                <h3 class="text-2xl font-serif font-bold mb-8 flex items-center gap-2">
+                                <h3 class="text-xl font-serif font-bold mb-6 flex items-center gap-2">
                                     <i class="fa-solid fa-hand-holding-heart text-amber-400"></i> 
                                     <span data-i18n="sec_soc_title">社会实践</span>
                                 </h3>
-                                <ul class="space-y-8 text-sm text-blue-100">
-                                    <li class="relative pl-6">
-                                        <div class="absolute left-0 top-1.5 w-2 h-2 bg-amber-500 rounded-full ring-4 ring-amber-500/30"></div>
-                                        <strong class="text-white block text-lg mb-1">2025.07</strong>
-                                        <span class="text-amber-300 text-xs font-bold uppercase tracking-wider mb-1 block">Team Leader</span>
+                                <ul class="space-y-6 text-xs text-blue-100">
+                                    <li class="relative pl-4">
+                                        <div class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full ring-2 ring-amber-500/30"></div>
+                                        <strong class="text-white block text-sm mb-0.5">2025.07</strong>
+                                        <span class="text-amber-300 text-[10px] font-bold uppercase tracking-wider mb-0.5 block">Team Leader</span>
                                         <span data-i18n="soc_1">浙大“黄土地计划”赴嘉善实践团团长</span>
                                     </li>
-                                    <li class="relative pl-6 border-l border-white/10 ml-1">
-                                        <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-1">2025.01</strong>
+                                    <li class="relative pl-4 border-l border-white/10 ml-0.5">
+                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                                        <strong class="text-white block mb-0.5">2025.01</strong>
                                         <span data-i18n="soc_2">浙江省文化广电旅游厅办公室实践</span>
                                     </li>
-                                    <li class="relative pl-6 border-l border-white/10 ml-1">
-                                        <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-1">2024.01</strong>
+                                    <li class="relative pl-4 border-l border-white/10 ml-0.5">
+                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                                        <strong class="text-white block mb-0.5">2024.01</strong>
                                         <span data-i18n="soc_3">四川广元支教 (微光公益)</span>
                                     </li>
-                                     <li class="relative pl-6 border-l border-white/10 ml-1">
-                                        <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-1">2022.07</strong>
-                                        <span class="text-xs text-white/60">Vice Captain</span> <br>
+                                     <li class="relative pl-4 border-l border-white/10 ml-0.5">
+                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
+                                        <strong class="text-white block mb-0.5">2022.07</strong>
+                                        <span class="text-[10px] text-white/60">Vice Captain</span> <br>
                                         <span data-i18n="soc_4">北大 CHARLS 项目湖北队</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="mt-12 pt-8 border-t border-white/10 relative z-10 text-center">
-                                <p class="text-xs uppercase tracking-[0.2em] text-blue-300 mb-4">Volunteer Hours</p>
+                            <div class="mt-8 pt-6 border-t border-white/10 relative z-10 text-center">
+                                <p class="text-[10px] uppercase tracking-[0.2em] text-blue-300 mb-2">Volunteer Hours</p>
                                 <div class="flex justify-around">
                                     <div>
-                                        <span class="block text-3xl font-bold text-amber-400">100+</span>
-                                        <span class="text-xs text-white/60">Undergrad</span>
+                                        <span class="block text-2xl font-bold text-amber-400">100+</span>
+                                        <span class="text-[10px] text-white/60">Undergrad</span>
                                     </div>
-                                    <div class="w-px bg-white/20 h-10"></div>
+                                    <div class="w-px bg-white/20 h-8"></div>
                                     <div>
-                                        <span class="block text-3xl font-bold text-amber-400">61.9</span>
-                                        <span class="text-xs text-white/60">Master</span>
+                                        <span class="block text-2xl font-bold text-amber-400">61.9</span>
+                                        <span class="text-[10px] text-white/60">Master</span>
                                     </div>
                                 </div>
                             </div>
@@ -463,88 +463,88 @@
         </section>
 
         <!-- Internships Section (Warm Amber/Orange Gradient) -->
-        <section id="internships" class="py-20 relative overflow-hidden reveal">
+        <section id="internships" class="py-16 relative overflow-hidden reveal">
             <!-- Decorative Gradient -->
             <div class="absolute inset-0 bg-gradient-to-b from-amber-100/40 via-orange-50/20 to-white -z-10"></div>
             <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
             
             <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-12">
-                    <div class="w-1 h-12 bg-amber-500 rounded-full"></div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-1 h-10 bg-amber-500 rounded-full"></div>
                     <div>
-                        <h2 class="text-4xl font-serif font-bold text-gray-900" data-i18n="sec_exp_title">实习经历</h2>
-                        <p class="text-xs text-amber-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_exp_sub">Professional Execution</p>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_exp_title">实习经历</h2>
+                        <p class="text-[10px] text-amber-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_exp_sub">Professional Execution</p>
                     </div>
                 </div>
 
-                <div class="space-y-8">
+                <div class="space-y-6">
                     <!-- Kuaishou -->
-                    <div class="bg-white/95 backdrop-blur rounded-2xl p-8 border-l-8 border-amber-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-8 relative z-10">
+                    <div class="bg-white/95 backdrop-blur rounded-2xl p-6 border-l-8 border-amber-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
                             <div>
-                                <a href="https://zhaopin.kuaishou.cn/" target="_blank" class="text-3xl font-bold text-gray-900 hover:text-amber-600 transition-colors flex items-center gap-3">
-                                    <span data-i18n="ks_name">快手 (Kuaishou)</span> <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gray-400 opacity-50"></i>
+                                <a href="https://zhaopin.kuaishou.cn/" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors flex items-center gap-2">
+                                    <span data-i18n="ks_name">快手 (Kuaishou)</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 opacity-50"></i>
                                 </a>
-                                <p class="text-gray-600 font-medium mt-1" data-i18n="ks_role">HRBP实习生 | 游戏业务中心</p>
+                                <p class="text-gray-600 text-sm font-medium mt-1" data-i18n="ks_role">HRBP实习生 | 游戏业务中心</p>
                             </div>
                             <div class="mt-2 md:mt-0 text-right">
-                                <span class="competency-tag bg-amber-50 text-amber-700 border-amber-200">Recruitment SOP</span>
+                                <span class="competency-tag bg-amber-50 text-amber-700 border-amber-200 text-[10px]">Recruitment SOP</span>
                             </div>
                         </div>
-                        <div class="grid md:grid-cols-3 gap-6 relative z-10">
-                            <div class="bg-slate-50 p-5 rounded-xl hover:bg-amber-50/50 transition-colors">
-                                <h4 class="font-bold text-amber-700 mb-2 flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> <span data-i18n="ks_point1_t">社招交付</span></h4>
-                                <p class="text-sm text-gray-600 leading-relaxed" data-i18n="ks_point1_d">独立负责核心岗。日均筛选 <strong>10+</strong>，产出Offer <strong>12</strong> 人。</p>
+                        <div class="grid md:grid-cols-3 gap-4 relative z-10">
+                            <div class="bg-slate-50 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
+                                <h4 class="font-bold text-amber-700 mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-bullseye"></i> <span data-i18n="ks_point1_t">社招交付</span></h4>
+                                <p class="text-xs text-gray-600 leading-relaxed" data-i18n="ks_point1_d">独立负责核心岗。日均筛选 <strong>10+</strong>，产出Offer <strong>12</strong> 人。</p>
                             </div>
-                            <div class="bg-slate-50 p-5 rounded-xl hover:bg-amber-50/50 transition-colors">
-                                <h4 class="font-bold text-amber-700 mb-2 flex items-center gap-2"><i class="fa-solid fa-network-wired"></i> <span data-i18n="ks_point2_t">校招运营</span></h4>
-                                <p class="text-sm text-gray-600 leading-relaxed" data-i18n="ks_point2_d">主导 <strong>8</strong> 场线下双选会，建立渠道数据台账。</p>
+                            <div class="bg-slate-50 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
+                                <h4 class="font-bold text-amber-700 mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-network-wired"></i> <span data-i18n="ks_point2_t">校招运营</span></h4>
+                                <p class="text-xs text-gray-600 leading-relaxed" data-i18n="ks_point2_d">主导 <strong>8</strong> 场线下双选会，建立渠道数据台账。</p>
                             </div>
-                            <div class="bg-slate-50 p-5 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
-                                <p class="text-center text-sm font-serif italic text-gray-500">"Demonstrated strong ownership and ability to standardize processes."</p>
+                            <div class="bg-slate-50 p-4 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
+                                <p class="text-center text-xs font-serif italic text-gray-500">"Demonstrated strong ownership and ability to standardize processes."</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- ByteDance -->
-                    <div class="bg-white/95 backdrop-blur rounded-2xl p-8 border-l-8 border-teal-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
+                    <div class="bg-white/95 backdrop-blur rounded-2xl p-6 border-l-8 border-teal-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 relative z-10">
                             <div>
-                                <a href="http://jobs.bytedance.com/campus" target="_blank" class="text-3xl font-bold text-gray-900 hover:text-teal-600 transition-colors flex items-center gap-3">
-                                    <span data-i18n="bd_name">字节跳动 (ByteDance)</span> <i class="fa-solid fa-arrow-up-right-from-square text-sm text-gray-400 opacity-50"></i>
+                                <a href="http://jobs.bytedance.com/campus" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-teal-600 transition-colors flex items-center gap-2">
+                                    <span data-i18n="bd_name">字节跳动 (ByteDance)</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 opacity-50"></i>
                                 </a>
-                                <p class="text-gray-600 font-medium mt-1" data-i18n="bd_role">人才交付实习生 | 招聘中心</p>
+                                <p class="text-gray-600 text-sm font-medium mt-1" data-i18n="bd_role">人才交付实习生 | 招聘中心</p>
                             </div>
                             <div class="mt-2 md:mt-0 text-right">
-                                <span class="competency-tag bg-teal-50 text-teal-700 border-teal-200">Data Driven</span>
+                                <span class="competency-tag bg-teal-50 text-teal-700 border-teal-200 text-[10px]">Data Driven</span>
                             </div>
                         </div>
-                        <ul class="space-y-3 text-gray-700 relative z-10 pl-2">
-                            <li class="flex items-start gap-3" data-i18n="bd_point1"><i class="fa-solid fa-check text-teal-500 mt-1"></i> <span>累计一线待入职 Offer <strong>47</strong> 人，绩效排名实习生 <strong>Top 3</strong>。</span></li>
-                            <li class="flex items-start gap-3" data-i18n="bd_point2"><i class="fa-solid fa-check text-teal-500 mt-1"></i> <span>担任项目 Owner，基于漏斗数据倒逼招聘进度，保障体验。</span></li>
+                        <ul class="space-y-2 text-gray-700 text-xs relative z-10 pl-2">
+                            <li class="flex items-start gap-2" data-i18n="bd_point1"><i class="fa-solid fa-check text-teal-500 mt-0.5"></i> <span>累计一线待入职 Offer <strong>47</strong> 人，绩效排名实习生 <strong>Top 3</strong>。</span></li>
+                            <li class="flex items-start gap-2" data-i18n="bd_point2"><i class="fa-solid fa-check text-teal-500 mt-0.5"></i> <span>担任项目 Owner，基于漏斗数据倒逼招聘进度，保障体验。</span></li>
                         </ul>
                     </div>
 
                     <!-- Additional Internships -->
                     <div class="grid md:grid-cols-2 gap-6">
                         <!-- CRCC -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-red-200 transition-all hover:-translate-y-1 group">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors"><i class="fa-regular fa-building"></i></div>
-                                <h4 class="font-bold text-gray-900 text-lg" data-i18n="crcc_name">中铁建房地产集团</h4>
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-red-200 transition-all hover:-translate-y-1 group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors"><i class="fa-regular fa-building"></i></div>
+                                <h4 class="font-bold text-gray-900 text-base" data-i18n="crcc_name">中铁建房地产集团</h4>
                             </div>
-                            <p class="text-xs text-gray-500 mb-3 bg-gray-50 inline-block px-2 py-1 rounded" data-i18n="crcc_role">党群工作部实习生 | 2023.09 - 2023.11</p>
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="crcc_desc">撰写领导发言稿/新闻稿 10+ 篇，协助开展“三会一课”，完成月度/季度工作总结。</p>
+                            <p class="text-[10px] text-gray-500 mb-2 bg-gray-50 inline-block px-2 py-0.5 rounded" data-i18n="crcc_role">党群工作部实习生 | 2023.09 - 2023.11</p>
+                            <p class="text-xs text-gray-600 leading-relaxed" data-i18n="crcc_desc">撰写领导发言稿/新闻稿 10+ 篇，协助开展“三会一课”，完成月度/季度工作总结。</p>
                         </div>
                         
                         <!-- Leda Social Work -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-green-200 transition-all hover:-translate-y-1 group">
-                             <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors"><i class="fa-solid fa-people-group"></i></div>
-                                <h4 class="font-bold text-gray-900 text-lg" data-i18n="leda_name">武汉市乐达社工中心</h4>
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-green-200 transition-all hover:-translate-y-1 group">
+                             <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors"><i class="fa-solid fa-people-group"></i></div>
+                                <h4 class="font-bold text-gray-900 text-base" data-i18n="leda_name">武汉市乐达社工中心</h4>
                             </div>
-                            <p class="text-xs text-gray-500 mb-3 bg-gray-50 inline-block px-2 py-1 rounded" data-i18n="leda_role">实习社工 | 2023.03 - 2023.07</p>
-                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="leda_desc">引导 100+ 新就业群体参与治理，搭建“风铃志愿服务队”，项目获“洪山区十大志愿项目”。</p>
+                            <p class="text-[10px] text-gray-500 mb-2 bg-gray-50 inline-block px-2 py-0.5 rounded" data-i18n="leda_role">实习社工 | 2023.03 - 2023.07</p>
+                            <p class="text-xs text-gray-600 leading-relaxed" data-i18n="leda_desc">引导 100+ 新就业群体参与治理，搭建“风铃志愿服务队”，项目获“洪山区十大志愿项目”。</p>
                         </div>
                     </div>
                 </div>
@@ -552,53 +552,53 @@
         </section>
 
         <!-- Research Section (Deep Purple Gradient) -->
-        <section id="research" class="py-20 relative overflow-hidden reveal">
+        <section id="research" class="py-16 relative overflow-hidden reveal">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-100/40 via-purple-50/20 to-white -z-10"></div>
             
             <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-12">
-                    <div class="w-1 h-12 bg-purple-600 rounded-full"></div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-1 h-10 bg-purple-600 rounded-full"></div>
                     <div>
-                        <h2 class="text-4xl font-serif font-bold text-gray-900" data-i18n="sec_res_title">科研与竞赛</h2>
-                        <p class="text-xs text-purple-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_res_sub">Analytical Thinking & Social Insight</p>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_res_title">科研与竞赛</h2>
+                        <p class="text-[10px] text-purple-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_res_sub">Analytical Thinking & Social Insight</p>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-6">
                     <!-- Papers -->
-                    <div class="space-y-6">
-                         <h3 class="text-xl font-bold text-gray-800 border-b border-purple-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-book-open text-purple-600"></i> <span data-i18n="res_paper_title">学术成果</span></h3>
-                         <div class="bg-white p-6 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-2 bg-purple-50 text-purple-700 border-purple-200">Writing</span>
-                            <h4 class="font-bold text-lg text-gray-900" data-i18n="paper1_t">《包容性社会治理》第五章</h4>
-                            <p class="text-xs text-gray-400 mb-3 font-mono">2024.11 - 2025.03 | 第一作者 | 专著章节</p>
-                            <p class="text-sm text-gray-600" data-i18n="paper1_d">负责全章撰写，展现深厚理论功底。</p>
+                    <div class="space-y-4">
+                         <h3 class="text-lg font-bold text-gray-800 border-b border-purple-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-book-open text-purple-600"></i> <span data-i18n="res_paper_title">学术成果</span></h3>
+                         <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
+                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">Writing</span>
+                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper1_t">《包容性社会治理》第五章</h4>
+                            <p class="text-[10px] text-gray-400 mb-2 font-mono">2024.11 - 2025.03 | 第一作者 | 专著章节</p>
+                            <p class="text-xs text-gray-600" data-i18n="paper1_d">负责全章撰写，展现深厚理论功底。</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-2 bg-purple-50 text-purple-700 border-purple-200">Analysis</span>
-                            <h4 class="font-bold text-lg text-gray-900" data-i18n="paper2_t">第二届社会研究年会：质性元分析</h4>
-                            <p class="text-xs text-gray-400 mb-3 font-mono">第一作者 | 会议论文</p>
-                            <p class="text-sm text-gray-600" data-i18n="paper2_d">探讨专业社会工作与街区权力关系。</p>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
+                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">Analysis</span>
+                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper2_t">第二届社会研究年会：质性元分析</h4>
+                            <p class="text-[10px] text-gray-400 mb-2 font-mono">第一作者 | 会议论文</p>
+                            <p class="text-xs text-gray-600" data-i18n="paper2_d">探讨专业社会工作与街区权力关系。</p>
                         </div>
-                         <div class="bg-white p-6 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-2 bg-purple-50 text-purple-700 border-purple-200">National Project</span>
-                            <h4 class="font-bold text-lg text-gray-900" data-i18n="paper3_t">国家社科基金：老幼同养服务研究</h4>
-                            <p class="text-xs text-gray-400 mb-0 font-mono">排序第四 | 2023.06</p>
+                         <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
+                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">National Project</span>
+                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper3_t">国家社科基金：老幼同养服务研究</h4>
+                            <p class="text-[10px] text-gray-400 mb-0 font-mono">排序第四 | 2023.06</p>
                         </div>
                     </div>
                     
                     <!-- Competitions -->
-                    <div class="space-y-6">
-                        <h3 class="text-xl font-bold text-gray-800 border-b border-red-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-trophy text-red-600"></i> <span data-i18n="res_comp_title">竞赛荣誉</span></h3>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-2 bg-red-50 text-red-700 border-red-200">Leadership</span>
-                            <h4 class="font-bold text-lg text-gray-900" data-i18n="comp1_t">第十八届“挑战杯”红色专项</h4>
-                            <p class="text-sm font-bold text-red-600 mt-1">全国三等奖 | 排序第六</p>
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-bold text-gray-800 border-b border-red-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-trophy text-red-600"></i> <span data-i18n="res_comp_title">竞赛荣誉</span></h3>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition-all">
+                            <span class="competency-tag mb-1 bg-red-50 text-red-700 border-red-200 text-[10px]">Leadership</span>
+                            <h4 class="font-bold text-base text-gray-900" data-i18n="comp1_t">第十八届“挑战杯”红色专项</h4>
+                            <p class="text-xs font-bold text-red-600 mt-1">全国三等奖 | 排序第六</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-2 bg-amber-50 text-amber-700 border-amber-200">Team Leader</span>
-                            <h4 class="font-bold text-lg text-gray-900" data-i18n="comp2_t">第十八届“挑战杯”学术科技竞赛</h4>
-                            <p class="text-sm font-bold text-amber-600 mt-1">校级三等奖 | 排序第一</p>
-                            <p class="text-sm text-gray-600 mt-2" data-i18n="comp2_d">带领团队完成项目设计与路演，体现统筹协调能力。</p>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-amber-500 hover:shadow-md transition-all">
+                            <span class="competency-tag mb-1 bg-amber-50 text-amber-700 border-amber-200 text-[10px]">Team Leader</span>
+                            <h4 class="font-bold text-base text-gray-900" data-i18n="comp2_t">第十八届“挑战杯”学术科技竞赛</h4>
+                            <p class="text-xs font-bold text-amber-600 mt-1">校级三等奖 | 排序第一</p>
+                            <p class="text-xs text-gray-600 mt-1" data-i18n="comp2_d">带领团队完成项目设计与路演，体现统筹协调能力。</p>
                         </div>
                     </div>
                 </div>
@@ -606,32 +606,32 @@
         </section>
 
         <!-- AI Charity Section (Revised Content & Interaction) -->
-        <section id="ai-demo" class="py-20 bg-gradient-to-b from-white to-gray-100 reveal">
+        <section id="ai-demo" class="py-16 bg-gradient-to-b from-white to-gray-100 reveal">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="bg-gray-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
+                <div class="bg-gray-900 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
                     <div class="absolute top-0 right-0 w-96 h-96 bg-pink-500 opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-                    <div class="relative z-10 grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <span class="competency-tag bg-gray-800 border-gray-600 text-gray-300"><i class="fa-solid fa-heart text-red-400 mr-1"></i> AI for Good</span>
-                            <h2 class="text-4xl font-serif font-bold mb-6 mt-4" data-i18n="ai_title">让我们一起努力为每一处不可见的角落里送出我们的小红花</h2>
-                            <p class="text-gray-300 mb-6 text-lg leading-relaxed" data-i18n="ai_desc">请在下方写下您对山区儿童的祝福。AI 将识别您的善意，并生成一朵数字小红花。</p>
+                            <span class="competency-tag bg-gray-800 border-gray-600 text-gray-300 text-[10px]"><i class="fa-solid fa-heart text-red-400 mr-1"></i> AI for Good</span>
+                            <h2 class="text-3xl font-serif font-bold mb-4 mt-3" data-i18n="ai_title">让我们一起努力为每一处不可见的角落里送出我们的小红花</h2>
+                            <p class="text-gray-300 mb-6 text-sm leading-relaxed" data-i18n="ai_desc">请在下方写下您对山区儿童的祝福。AI 将识别您的善意，并生成一朵数字小红花。</p>
                             
                             <!-- Counter Removed as requested -->
 
-                            <div class="bg-gray-800/50 backdrop-blur p-6 rounded-2xl border border-gray-700">
-                                <textarea id="ai-input" class="w-full bg-transparent text-white border-none focus:ring-0 placeholder-gray-500 text-base resize-none" rows="2" placeholder="写下一句温暖的祝福..."></textarea>
-                                <div class="flex justify-between items-center mt-4 border-t border-gray-700 pt-4">
-                                    <span id="ai-status" class="text-sm font-mono text-gray-500 flex items-center gap-2"><span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready</span>
-                                    <button onclick="sendFlower()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg transform active:scale-95 transition-all" data-i18n="ai_btn">
+                            <div class="bg-gray-800/50 backdrop-blur p-5 rounded-2xl border border-gray-700">
+                                <textarea id="ai-input" class="w-full bg-transparent text-white border-none focus:ring-0 placeholder-gray-500 text-sm resize-none" rows="2" placeholder="写下一句温暖的祝福..."></textarea>
+                                <div class="flex justify-between items-center mt-3 border-t border-gray-700 pt-3">
+                                    <span id="ai-status" class="text-xs font-mono text-gray-500 flex items-center gap-2"><span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready</span>
+                                    <button onclick="sendFlower()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-lg transform active:scale-95 transition-all" data-i18n="ai_btn">
                                         送出祝福
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <!-- Image Container: Starts Grayscale -->
-                        <div id="ai-bg-image" class="h-80 md:h-full bg-gray-800 rounded-2xl relative overflow-hidden border border-gray-700 shadow-inner bg-[url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center grayscale transition-all duration-1000">
+                        <div id="ai-bg-image" class="h-64 md:h-full bg-gray-800 rounded-xl relative overflow-hidden border border-gray-700 shadow-inner bg-[url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center grayscale transition-all duration-1000">
                             <div class="absolute inset-0 bg-black/50"></div>
-                            <div class="absolute top-4 right-4 text-xs text-gray-300 font-mono border border-gray-500 px-2 py-1 rounded bg-black/50">Donation System: Active</div>
+                            <div class="absolute top-3 right-3 text-[10px] text-gray-300 font-mono border border-gray-500 px-2 py-0.5 rounded bg-black/50">Donation System: Active</div>
                             <div id="flower-garden" class="absolute inset-0 pointer-events-none"></div>
                         </div>
                     </div>
@@ -639,10 +639,10 @@
             </div>
         </section>
 
-        <footer class="bg-white py-12 border-t border-gray-200 text-center">
-            <p class="text-zju-blue font-serif font-bold tracking-[0.2em] text-xl">GUO LINFENG</p>
-            <p class="text-xs text-gray-400 mt-3">Designed with ❤️ & Code | © 2025</p>
-            <button onclick="showCover()" class="mt-8 text-sm text-gray-500 hover:text-black underline transition-colors" data-i18n="back_cover">Back to Cover</button>
+        <footer class="bg-white py-8 border-t border-gray-200 text-center">
+            <p class="text-zju-blue font-serif font-bold tracking-[0.2em] text-lg">GUO LINFENG</p>
+            <p class="text-[10px] text-gray-400 mt-2">Designed with ❤️ & Code | © 2025</p>
+            <button onclick="showCover()" class="mt-6 text-xs text-gray-500 hover:text-black underline transition-colors" data-i18n="back_cover">Back to Cover</button>
         </footer>
 
     </div>
