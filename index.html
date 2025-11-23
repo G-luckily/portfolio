@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郭林峰 Guo Linfeng | Portfolio</title>
+    <title>郭林峰 Guo Linfeng | Portfolio 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif+SC:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -14,41 +14,29 @@
                 extend: {
                     colors: {
                         'zju-blue': '#003F88',
-                        'zju-light': '#E6F0FF',
                         'hust-green': '#00703C',
-                        'hust-light': '#E6F7EF',
                         'amber-accent': '#D97706',
-                        'slate-bg': '#F8FAFC',
+                        'slate-bg': '#F1F5F9',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['"Playfair Display"', '"Noto Serif SC"', 'serif'],
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
                         'float': 'float 6s ease-in-out infinite',
                         'blob': 'blob 7s infinite',
-                        'breathe': 'breathe 3s ease-in-out infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
                             '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        breathe: {
-                            '0%, 100%': { boxShadow: '0 0 15px rgba(217, 119, 6, 0.2)' },
-                            '50%': { boxShadow: '0 0 30px rgba(217, 119, 6, 0.6)' },
                         }
                     }
                 }
@@ -56,867 +44,593 @@
         }
     </script>
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
-        
-        /* Cover Page Transitions */
-        #cover-page {
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-        }
-        #cover-page.hidden-slide {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        /* Content Page Transitions */
-        #main-content {
-            opacity: 0;
-            transition: opacity 1s ease 0.3s;
-            height: 0;
-            overflow: hidden;
-        }
-        #main-content.visible {
-            opacity: 1;
-            height: auto;
-            overflow: visible;
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Reveal Animation */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Competency Tag Style */
-        .competency-tag {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.8);
-            color: #D97706;
-            padding: 4px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(217, 119, 6, 0.2);
-            display: inline-block;
-            margin-bottom: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
         }
-
-        /* Hover Link Effect */
-        .hover-link {
-            position: relative;
-            display: inline-block;
-        }
-        .hover-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: currentColor;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .hover-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-        
-        /* Background Patterns */
-        .bg-dots {
-            background-image: radial-gradient(#94a3b8 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        
-        /* Scroll Margin for Education to show Hero */
-        #education-anchor {
-            scroll-margin-top: 180px; /* Adjust based on Hero height visibility preference */
-        }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal.active .modal-content { transform: scale(1); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-zju-blue selection:text-white overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-zju-blue selection:text-white">
 
-    <!-- ================= COVER PAGE ================= -->
-    <div id="cover-page" class="fixed inset-0 z-[100] bg-slate-900 text-white flex flex-col md:flex-row overflow-hidden">
-        
-        <!-- Language Toggle (Cover) -->
-        <div class="absolute top-6 right-6 z-50">
-             <button onclick="toggleLanguage()" class="border border-white/30 px-3 py-1.5 rounded-full text-xs hover:bg-white hover:text-slate-900 transition-all backdrop-blur-sm">EN / 中</button>
-        </div>
-
-        <!-- Left: Navigation & Title -->
-        <div class="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative z-10 bg-gradient-to-br from-slate-900 to-zju-dark">
-            <div class="space-y-2">
-                <!-- Modified: Changed to specific description instead of generic title -->
-                <p class="text-amber-500 tracking-[0.2em] text-[10px] md:text-xs font-bold mb-2" data-i18n="portfolio_label">ACADEMIC & PROFESSIONAL PORTFOLIO</p>
-                <!-- Horizontal Chinese Name - Reduced font size for better fit -->
-                <h1 id="cover-name" class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-2 transition-all duration-300" data-i18n="name_br">
-                    GUO<br>LIN<br>FENG
-                </h1>
-                <p class="text-slate-400 mt-4 text-base md:text-lg font-light italic border-l-2 border-amber-500 pl-4 max-w-md" data-i18n="quote">
-                    "Dedication to Public Value & Social Innovation"
-                </p>
-            </div>
-
-            <nav class="space-y-3 mt-8 md:mt-12">
-                <!-- Menu Items - Reduced font size -->
-                <div onclick="enterPortfolio('education-anchor')" class="group cursor-pointer">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
-                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">01</span> <span data-i18n="nav_edu">Education</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
-                    </h2>
-                </div>
-                <div onclick="enterPortfolio('leadership')" class="group cursor-pointer">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
-                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">02</span> <span data-i18n="nav_lead">Leadership</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
-                    </h2>
-                </div>
-                <div onclick="enterPortfolio('internships')" class="group cursor-pointer">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
-                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">03</span> <span data-i18n="nav_exp">Experience</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
-                    </h2>
-                </div>
-                <div onclick="enterPortfolio('research')" class="group cursor-pointer">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
-                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">04</span> <span data-i18n="nav_res">Research</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
-                    </h2>
-                </div>
-                <div onclick="enterPortfolio('social-practice')" class="group cursor-pointer">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif text-slate-300 group-hover:text-amber-400 transition-colors flex items-center gap-3">
-                        <span class="text-amber-600/50 text-xs font-sans font-bold w-5">05</span> <span data-i18n="nav_soc">Social Practice</span> <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 text-xs transition-all -translate-x-4 group-hover:translate-x-0"></i>
-                    </h2>
-                </div>
-            </nav>
-        </div>
-
-        <!-- Right: Visual Abstract & Photo -->
-        <div class="hidden md:flex w-1/2 relative bg-slate-800 items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-zju-blue/90 via-zju-blue/40 to-transparent"></div>
-            
-            <!-- Dynamic Circles -->
-            <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-
-            <!-- Profile Photo (Improved Interaction) -->
-            <div class="relative z-20 text-center animate-float transform translate-y-[-10%]">
-                <div class="relative inline-block group cursor-default">
-                    <!-- Breathing Glow Effect (Color Breathing) -->
-                    <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-blue-400 rounded-full opacity-60 blur-md group-hover:opacity-80 transition duration-500 animate-breathe"></div>
-                    <!-- Reduced image size for better fit -->
-                    <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=D97706&color=fff&size=512'" class="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full border-4 border-white/20 object-cover shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
-                    
-                    <!-- Floating Badge -->
-                    <div class="absolute -right-4 bottom-4 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
-                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                        <span class="text-xs font-bold text-white tracking-wide">OPEN TO WORK</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="absolute bottom-8 left-0 right-0 text-center text-white/60 px-8">
-                <div class="flex justify-center gap-4">
-                    <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">Policy Analysis</span>
-                    <span class="px-3 py-1 border border-white/20 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-colors cursor-default">HR Strategy</span>
-                </div>
+    <!-- 悬浮导航栏 -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-500 py-4">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <a href="#cover" class="text-2xl font-serif font-bold text-zju-blue tracking-widest hover:opacity-80 transition-opacity">GUO LINFENG</a>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-600 bg-white/50 backdrop-blur-md px-6 py-2 rounded-full shadow-sm border border-white/50">
+                <a href="#education" class="hover:text-zju-blue transition-colors">教育</a>
+                <a href="#research" class="hover:text-zju-blue transition-colors">科研</a>
+                <a href="#leadership" class="hover:text-zju-blue transition-colors">学生工作</a>
+                <a href="#practice" class="hover:text-zju-blue transition-colors">社会实践</a>
+                <a href="#honors" class="hover:text-zju-blue transition-colors">荣誉</a>
+                <a href="#ai-demo" class="text-amber-600 hover:text-amber-700"><i class="fa-solid fa-heart"></i> 祝福</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- ================= MAIN CONTENT ================= -->
-    <div id="main-content" class="relative bg-slate-50">
-        
-        <!-- Fixed Navbar -->
-        <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-14"> <!-- Reduced height -->
-                    <div class="flex items-center gap-4">
-                        <button onclick="showCover()" class="text-gray-500 hover:text-zju-blue transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-wider border-r border-gray-200 pr-4">
-                            <i class="fa-solid fa-bars"></i> <span data-i18n="menu_btn">Menu</span>
-                        </button>
-                        <span class="text-lg font-serif font-bold text-zju-blue tracking-wide" data-i18n="name_simple">GUO LINFENG</span>
-                    </div>
-                    
-                    <div class="flex items-center gap-4">
-                         <div class="hidden md:flex space-x-6 items-center text-xs font-medium">
-                            <!-- Reordered Navigation Links -->
-                            <a href="#education-anchor" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_edu">Education</a>
-                            <a href="#leadership" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_lead">Leadership</a>
-                            <a href="#internships" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_exp">Experience</a>
-                            <a href="#research" class="text-gray-600 hover:text-zju-blue" data-i18n="nav_res">Research</a>
-                        </div>
-                        <button onclick="toggleLanguage()" class="ml-4 border border-gray-300 px-3 py-1 rounded-full text-xs hover:bg-gray-100 transition-all">EN / 中</button>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <!-- 1. 杂志风格导语页 -->
+    <section id="cover" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#0a192f] to-zju-blue opacity-90"></div>
+        <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-zju-blue rounded-full blur-[120px] opacity-30 animate-blob"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-amber-600 rounded-full blur-[100px] opacity-20 animate-blob" style="animation-delay: 2s;"></div>
 
-        <!-- Hero Summary (Attached to Education for Scroll Logic) -->
-        <div id="education-anchor" class="pt-20"></div> <!-- Reduced pt -->
-        <section class="pb-8 px-4 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=G+L&background=003F88&color=fff'" class="w-24 h-24 rounded-full border-4 border-white shadow-lg"> <!-- Reduced size -->
+        <div class="relative z-10 max-w-7xl w-full px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8 animate-slide-up">
                 <div>
-                    <h1 class="text-3xl font-serif font-bold text-gray-900 mb-1" data-i18n="hero_name">郭林峰</h1>
-                    <p class="text-gray-600 text-sm" data-i18n="hero_title">浙江大学 公共管理学院 | 2024级硕士研究生</p>
-                    <div class="mt-3 flex gap-3 flex-wrap">
-                        <span class="competency-tag text-[10px]" data-i18n="tag_exec">⚡ 执行力 Max</span>
-                        <span class="competency-tag text-[10px]" data-i18n="tag_acad">📚 学术严谨</span>
-                        <span class="competency-tag text-[10px]" data-i18n="tag_lead">🤝 组织领导力</span>
+                    <p class="text-amber-400 tracking-[0.3em] text-xs font-bold mb-4">ACADEMIC & PROFESSIONAL PORTFOLIO</p>
+                    <h1 class="text-7xl md:text-8xl font-serif font-bold leading-tight mb-6">GUO<br>LIN<br>FENG</h1>
+                    <p class="text-gray-400 text-lg font-light italic border-l-2 border-amber-500 pl-6 max-w-md">
+                        "致力于公共价值创造与社会治理创新"
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 pt-8 border-t border-white/10">
+                    <a href="#education" class="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                        <span class="text-amber-500 font-mono text-xs">01</span><span class="font-serif text-xl group-hover:translate-x-2 transition-transform">Education</span>
+                    </a>
+                    <a href="#research" class="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                        <span class="text-amber-500 font-mono text-xs">02</span><span class="font-serif text-xl group-hover:translate-x-2 transition-transform">Research</span>
+                    </a>
+                    <a href="#leadership" class="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                        <span class="text-amber-500 font-mono text-xs">03</span><span class="font-serif text-xl group-hover:translate-x-2 transition-transform">Leadership</span>
+                    </a>
+                    <a href="#practice" class="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                        <span class="text-amber-500 font-mono text-xs">04</span><span class="font-serif text-xl group-hover:translate-x-2 transition-transform">Practice</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center animate-float">
+                <div class="relative w-80 h-80 md:w-96 md:h-96">
+                    <div class="absolute inset-0 rounded-full border border-white/10 scale-110"></div>
+                    <div class="absolute inset-0 rounded-full border border-dashed border-white/20 scale-125 animate-[spin_60s_linear_infinite]"></div>
+                    <div class="w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-2xl relative z-10 group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zju-blue/80 to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="profile.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Guo+Linfeng&background=003F88&color=fff&size=512'" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="absolute bottom-0 right-0 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-xs font-bold flex items-center gap-2 shadow-lg">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> OPEN TO WORK
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-gray-500"><i class="fa-solid fa-chevron-down text-2xl"></i></div>
+    </section>
 
-        <!-- Education Section (Enhanced Colors) -->
-        <section id="education" class="py-12 relative overflow-hidden reveal"> <!-- Reduced py -->
-            <!-- Background Decor -->
-            <div class="absolute inset-0 bg-dots opacity-20 -z-10"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-100/50 via-blue-50/20 to-white -z-10"></div>
-            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-green-50/40 to-transparent -z-10"></div>
+    <div class="relative bg-slate-50">
+        <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute top-[10%] right-[-10%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-amber-50/60 rounded-full blur-[100px]"></div>
+        </div>
 
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-8"> <!-- Reduced margin -->
-                    <div class="w-1 h-10 bg-zju-blue rounded-full"></div>
-                    <div>
-                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_edu_title">教育背景</h2>
-                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_edu_sub">Academic Excellence</p>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6"> <!-- Reduced gap -->
-                    <!-- ZJU (Blue Theme) -->
-                    <div class="bg-white/90 backdrop-blur p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-zju-blue group border border-white flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-zju-blue text-white rounded-full flex items-center justify-center text-lg shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-graduation-cap"></i></div>
-                                <div>
-                                    <a href="https://www.zju.edu.cn" target="_blank" class="text-xl font-bold text-gray-900 hover:text-zju-blue hover-link block">
-                                        <span data-i18n="zju_name">浙江大学</span>
-                                    </a>
-                                    <span class="text-[10px] text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_hz">杭州 Hangzhou</span></span>
-                                </div>
-                            </div>
-                            <span class="text-xs bg-zju-light text-zju-blue px-2 py-1 rounded-full font-bold">2024 - 2027</span>
-                        </div>
-                        <p class="text-gray-700 mb-4 text-sm font-medium" data-i18n="zju_major">公共管理学院 | 社会工作硕士</p>
-                        <div class="mt-auto bg-slate-50 p-3 rounded-xl border border-gray-100">
-                            <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
-                                <span class="font-semibold text-xs text-gray-500" data-i18n="rank_label">专业排名</span>
-                                <span class="text-zju-blue font-bold text-sm">3/30</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="font-semibold text-xs text-gray-500" data-i18n="score_label">加权平均分</span>
-                                <span class="text-gray-900 font-bold text-sm">92.69</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HUST (Green Theme - Explicit Request) -->
-                    <div class="bg-white/90 backdrop-blur p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border-t-4 border-hust-green group border border-white flex flex-col h-full">
-                         <div class="flex justify-between items-start mb-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-hust-green text-white rounded-full flex items-center justify-center text-lg shadow-md group-hover:scale-110 transition-transform"><i class="fa-solid fa-tree"></i></div>
-                                <div>
-                                    <a href="https://www.hust.edu.cn" target="_blank" class="text-xl font-bold text-gray-900 hover:text-hust-green hover-link block">
-                                        <span data-i18n="hust_name">华中科技大学</span>
-                                    </a>
-                                    <span class="text-[10px] text-gray-400 flex items-center gap-1 mt-1"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_wh">武汉 Wuhan</span></span>
-                                </div>
-                            </div>
-                            <span class="text-xs bg-hust-light text-hust-green px-2 py-1 rounded-full font-bold">2020 - 2024</span>
-                        </div>
-                        <p class="text-gray-700 mb-4 text-sm font-medium" data-i18n="hust_major">社会学院 (主修) & 经济学院 (双学位)</p>
-                        <div class="mt-auto bg-slate-50 p-3 rounded-xl border border-gray-100">
-                            <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
-                                <span class="font-semibold text-xs text-gray-500" data-i18n="rank_label">专业排名</span>
-                                <span class="text-hust-green font-bold text-sm">2/19</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="font-semibold text-xs text-gray-500">GPA</span>
-                                <span class="text-gray-900 font-bold text-sm">3.93/4.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- 2. Education -->
+        <section id="education" class="py-24 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-1.5 h-10 bg-zju-blue rounded-full"></div>
+                <h2 class="text-4xl font-serif font-bold text-gray-900">教育背景</h2>
             </div>
-        </section>
-
-        <!-- Leadership Section (Indigo/Gray Tint) -->
-        <section id="leadership" class="py-16 bg-slate-50/80 relative reveal">
-             <!-- Decor -->
-             <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#9ca3af_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
-             <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/40 to-transparent -z-10"></div>
-             
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Student Leadership -->
-                    <div class="md:col-span-2">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-1 h-10 bg-slate-800 rounded-full"></div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- ZJU -->
+                <div class="bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-sm border-t-4 border-zju-blue hover:shadow-xl transition-all group border border-white/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-50 text-zju-blue rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-graduation-cap"></i></div>
                             <div>
-                                <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_lead_title">学生工作</h2>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">Organization & Impact</p>
+                                <h3 class="text-2xl font-bold text-gray-900">浙江大学</h3>
+                                <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> 杭州</span>
                             </div>
                         </div>
-                        
-                        <div class="relative pl-6 border-l-2 border-gray-200 space-y-10">
-                            <!-- ZJU -->
-                            <div class="relative group">
-                                <div class="absolute -left-[33px] bg-zju-blue w-4 h-4 rounded-full border-2 border-white shadow-md group-hover:scale-110 transition-transform"></div>
-                                <h4 class="font-bold text-xl text-zju-blue mb-4" data-i18n="lead_zju_title">浙江大学阶段</h4>
-                                <div class="grid sm:grid-cols-2 gap-4">
-                                    <div class="bg-white p-4 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_1">研究生团总支组织部副部长</p>
-                                        <p class="text-[10px] text-gray-400 mt-1">2024.09 - 2025.09</p>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-xl border border-gray-200 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_2">丹青学园兼职辅导员</p>
-                                        <p class="text-[10px] text-gray-400 mt-1">2025.10 - 2026.10</p>
-                                    </div>
-                                    <div class="bg-white p-4 rounded-xl border border-gray-200 sm:col-span-2 hover:border-zju-blue/30 hover:bg-blue-50/50 transition-colors shadow-sm">
-                                        <p class="font-bold text-gray-900 text-sm" data-i18n="role_zju_3">社工研究生党支部组织委员</p>
-                                        <p class="text-[10px] text-gray-400 mt-1">2024.10 - 2025.10</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- HUST -->
-                            <div class="relative group">
-                                <div class="absolute -left-[33px] bg-gray-400 w-4 h-4 rounded-full border-2 border-white shadow-md group-hover:scale-110 transition-transform"></div>
-                                <h4 class="font-bold text-xl text-gray-600 mb-4" data-i18n="lead_hust_title">华中科技大学阶段</h4>
-                                <div class="space-y-4">
-                                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-amber-300 transition-colors">
-                                        <div class="flex justify-between items-start">
-                                            <p class="font-bold text-gray-900 text-sm" data-i18n="role_hust_1">英语协会会长</p>
-                                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">五星社团</span>
-                                        </div>
-                                        <p class="text-xs text-gray-600 mt-1" data-i18n="role_hust_1_d">带领团队获年度最高荣誉，个人获“优秀社团负责人”。</p>
-                                    </div>
-                                    <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-red-300 transition-colors">
-                                         <div class="flex justify-between items-start">
-                                            <p class="font-bold text-gray-900 text-sm" data-i18n="role_hust_2">本科生党支部书记</p>
-                                            <span class="text-[10px] bg-red-100 text-red-800 px-2 py-0.5 rounded font-bold">样板党支部</span>
-                                        </div>
-                                        <p class="text-xs text-gray-600 mt-1" data-i18n="role_hust_2_d">支部荣获年度最高荣誉“本科生样板党支部”。</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <span class="text-sm bg-blue-50 text-zju-blue px-3 py-1 rounded-full font-bold">2024.09 - 2027.03</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-6 text-lg">公共管理学院 | 社会工作专业（社会政策方向） | 硕士</p>
+                    <div class="bg-gradient-to-r from-blue-50 to-transparent p-4 rounded-xl space-y-2 border border-blue-100">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500">专业排名</span><span class="font-bold text-zju-blue text-lg">3/30</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500">加权平均分</span><span class="font-bold text-gray-900 text-lg">92.69</span>
                         </div>
                     </div>
-
-                    <!-- Social Practice (Dark Card) -->
-                    <div id="social-practice" class="md:col-span-1">
-                        <div class="bg-gradient-to-b from-slate-900 to-zju-blue rounded-2xl p-6 text-white shadow-2xl h-full relative overflow-hidden flex flex-col justify-between border border-slate-700">
-                            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-                            <div class="relative z-10">
-                                <h3 class="text-xl font-serif font-bold mb-6 flex items-center gap-2">
-                                    <i class="fa-solid fa-hand-holding-heart text-amber-400"></i> 
-                                    <span data-i18n="sec_soc_title">社会实践</span>
-                                </h3>
-                                <ul class="space-y-6 text-xs text-blue-100">
-                                    <li class="relative pl-4">
-                                        <div class="absolute left-0 top-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full ring-2 ring-amber-500/30"></div>
-                                        <strong class="text-white block text-sm mb-0.5">2025.07</strong>
-                                        <span class="text-amber-300 text-[10px] font-bold uppercase tracking-wider mb-0.5 block">Team Leader</span>
-                                        <span data-i18n="soc_1">浙大“黄土地计划”赴嘉善实践团团长</span>
-                                    </li>
-                                    <li class="relative pl-4 border-l border-white/10 ml-0.5">
-                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-0.5">2025.01</strong>
-                                        <span data-i18n="soc_2">浙江省文化广电旅游厅办公室实践</span>
-                                    </li>
-                                    <li class="relative pl-4 border-l border-white/10 ml-0.5">
-                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-0.5">2024.01</strong>
-                                        <span data-i18n="soc_3">四川广元支教 (微光公益)</span>
-                                    </li>
-                                     <li class="relative pl-4 border-l border-white/10 ml-0.5">
-                                        <div class="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 bg-white/50 rounded-full"></div>
-                                        <strong class="text-white block mb-0.5">2022.07</strong>
-                                        <span class="text-[10px] text-white/60">Vice Captain</span> <br>
-                                        <span data-i18n="soc_4">北大 CHARLS 项目湖北队</span>
-                                    </li>
-                                </ul>
+                </div>
+                <!-- HUST -->
+                <div class="bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-sm border-t-4 border-hust-green hover:shadow-xl transition-all group border border-white/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-50 text-hust-green rounded-xl flex items-center justify-center text-2xl"><i class="fa-solid fa-tree"></i></div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">华中科技大学</h3>
+                                <span class="text-xs text-gray-500 flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> 武汉</span>
                             </div>
-                            <div class="mt-8 pt-6 border-t border-white/10 relative z-10 text-center">
-                                <p class="text-[10px] uppercase tracking-[0.2em] text-blue-300 mb-2">Volunteer Hours</p>
-                                <div class="flex justify-around">
-                                    <div>
-                                        <span class="block text-2xl font-bold text-amber-400">100+</span>
-                                        <span class="text-[10px] text-white/60">Undergrad</span>
-                                    </div>
-                                    <div class="w-px bg-white/20 h-8"></div>
-                                    <div>
-                                        <span class="block text-2xl font-bold text-amber-400">61.9</span>
-                                        <span class="text-[10px] text-white/60">Master</span>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                        <span class="text-sm bg-green-50 text-hust-green px-3 py-1 rounded-full font-bold">2020.09 - 2024.06</span>
+                    </div>
+                    <p class="text-gray-700 font-medium mb-1 text-lg">社会学院 | 社会工作专业 | 本科 (主修)</p>
+                    <p class="text-gray-500 text-sm mb-6">经济学院 | 金融学 | 本科 (双学位)</p>
+                    <div class="bg-gradient-to-r from-green-50 to-transparent p-4 rounded-xl space-y-2 border border-green-100">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500">专业排名</span><span class="font-bold text-hust-green text-lg">2/19</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500">GPA</span><span class="font-bold text-gray-900 text-lg">3.93/4.00</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Internships Section (Warm Amber/Orange Gradient) -->
-        <section id="internships" class="py-16 relative overflow-hidden reveal">
-            <!-- Decorative Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-b from-amber-100/40 via-orange-50/20 to-white -z-10"></div>
-            <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <!-- 3. Research -->
+        <section id="research" class="py-12 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="flex justify-between items-end mb-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-1.5 h-10 bg-purple-600 rounded-full"></div>
+                    <h2 class="text-4xl font-serif font-bold text-gray-900">科研与竞赛</h2>
+                </div>
+                <span class="text-sm text-purple-600 bg-purple-50 px-3 py-1 rounded-full animate-pulse"><i class="fa-solid fa-arrow-pointer"></i> 点击卡片查看详情</span>
+            </div>
+            <div class="grid gap-6">
+                <div onclick="openModal('modal-1')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-purple-400 hover:shadow-lg transition-all relative overflow-hidden">
+                    <div class="absolute left-0 top-0 w-1.5 h-full bg-purple-500 group-hover:w-3 transition-all"></div>
+                    <div class="flex justify-between items-center pl-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2 py-1 rounded mb-2 inline-block">国家级课题 (挑战杯)</span>
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-800 transition-colors">第十八届“挑战杯”全国赛：新时代党的创新理论青年化阐释</h3>
+                            <p class="text-gray-500 text-sm mt-1">核心成员 | 全国三等奖</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 group-hover:text-purple-500"></i>
+                    </div>
+                </div>
+                <div onclick="openModal('modal-2')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-purple-400 hover:shadow-lg transition-all relative overflow-hidden">
+                    <div class="absolute left-0 top-0 w-1.5 h-full bg-purple-500 group-hover:w-3 transition-all"></div>
+                    <div class="flex justify-between items-center pl-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2 py-1 rounded mb-2 inline-block">国家社科基金</span>
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-800 transition-colors">中国城乡社区老幼同养服务及干预研究</h3>
+                            <p class="text-gray-500 text-sm mt-1">参与成员 | 排序第四</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 group-hover:text-purple-500"></i>
+                    </div>
+                </div>
+                <div onclick="openModal('modal-3')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-purple-400 hover:shadow-lg transition-all relative overflow-hidden">
+                    <div class="absolute left-0 top-0 w-1.5 h-full bg-purple-500 group-hover:w-3 transition-all"></div>
+                    <div class="flex justify-between items-center pl-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2 py-1 rounded mb-2 inline-block">学术专著 (第一作者)</span>
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-800 transition-colors">《包容性社会治理》第五章</h3>
+                            <p class="text-gray-500 text-sm mt-1">2024.11-2025.03 | 独立撰写</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 group-hover:text-purple-500"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Student Leadership (Full Details Preserved) -->
+        <section id="leadership" class="py-12 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-1.5 h-10 bg-slate-800 rounded-full"></div>
+                <h2 class="text-3xl font-serif font-bold text-gray-900">学生工作</h2>
+            </div>
             
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="w-1 h-10 bg-amber-500 rounded-full"></div>
-                    <div>
-                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_exp_title">实习经历</h2>
-                        <p class="text-[10px] text-amber-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_exp_sub">Professional Execution</p>
-                    </div>
-                </div>
-
-                <div class="space-y-6">
-                    <!-- Kuaishou -->
-                    <div class="bg-white/95 backdrop-blur rounded-2xl p-6 border-l-8 border-amber-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 relative z-10">
-                            <div>
-                                <a href="https://zhaopin.kuaishou.cn/" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors flex items-center gap-2">
-                                    <span data-i18n="ks_name">快手 (Kuaishou)</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 opacity-50"></i>
-                                </a>
-                                <p class="text-gray-600 text-sm font-medium mt-1" data-i18n="ks_role">HRBP实习生 | 游戏业务中心</p>
-                            </div>
-                            <div class="mt-2 md:mt-0 text-right">
-                                <span class="competency-tag bg-amber-50 text-amber-700 border-amber-200 text-[10px]">Recruitment SOP</span>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-4 relative z-10">
-                            <div class="bg-slate-50 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
-                                <h4 class="font-bold text-amber-700 mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-bullseye"></i> <span data-i18n="ks_point1_t">社招交付</span></h4>
-                                <p class="text-xs text-gray-600 leading-relaxed" data-i18n="ks_point1_d">独立负责核心岗。日均筛选 <strong>10+</strong>，产出Offer <strong>12</strong> 人。</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl hover:bg-amber-50/50 transition-colors">
-                                <h4 class="font-bold text-amber-700 mb-1 flex items-center gap-2 text-sm"><i class="fa-solid fa-network-wired"></i> <span data-i18n="ks_point2_t">校招运营</span></h4>
-                                <p class="text-xs text-gray-600 leading-relaxed" data-i18n="ks_point2_d">主导 <strong>8</strong> 场线下双选会，建立渠道数据台账。</p>
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl flex items-center justify-center border border-dashed border-gray-300">
-                                <p class="text-center text-xs font-serif italic text-gray-500">"Demonstrated strong ownership and ability to standardize processes."</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ByteDance -->
-                    <div class="bg-white/95 backdrop-blur rounded-2xl p-6 border-l-8 border-teal-400 shadow-sm hover:shadow-xl transition-all relative overflow-hidden">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 relative z-10">
-                            <div>
-                                <a href="http://jobs.bytedance.com/campus" target="_blank" class="text-2xl font-bold text-gray-900 hover:text-teal-600 transition-colors flex items-center gap-2">
-                                    <span data-i18n="bd_name">字节跳动 (ByteDance)</span> <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 opacity-50"></i>
-                                </a>
-                                <p class="text-gray-600 text-sm font-medium mt-1" data-i18n="bd_role">人才交付实习生 | 招聘中心</p>
-                            </div>
-                            <div class="mt-2 md:mt-0 text-right">
-                                <span class="competency-tag bg-teal-50 text-teal-700 border-teal-200 text-[10px]">Data Driven</span>
-                            </div>
-                        </div>
-                        <ul class="space-y-2 text-gray-700 text-xs relative z-10 pl-2">
-                            <li class="flex items-start gap-2" data-i18n="bd_point1"><i class="fa-solid fa-check text-teal-500 mt-0.5"></i> <span>累计一线待入职 Offer <strong>47</strong> 人，绩效排名实习生 <strong>Top 3</strong>。</span></li>
-                            <li class="flex items-start gap-2" data-i18n="bd_point2"><i class="fa-solid fa-check text-teal-500 mt-0.5"></i> <span>担任项目 Owner，基于漏斗数据倒逼招聘进度，保障体验。</span></li>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- HUST -->
+                <div class="space-y-8">
+                    <div class="bg-white/90 p-6 rounded-2xl shadow-sm border-l-4 border-amber-400 hover:shadow-lg transition-all relative group">
+                        <div class="absolute top-4 right-4 opacity-10 text-6xl text-amber-500"><i class="fa-solid fa-users"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">华中科技大学英语协会 <span class="text-sm font-normal text-gray-500 ml-2">会长</span></h3>
+                        <p class="text-xs text-gray-400 mb-4 font-mono">2021.09 - 2022.09</p>
+                        <ul class="space-y-2 text-sm text-gray-600 relative z-10">
+                            <li><strong class="text-amber-600">成员管理：</strong>管理社团成员848名，核心团队32名，统筹6大部门。</li>
+                            <li><strong class="text-amber-600">活动开展：</strong>主导策划10余项大型活动，开展超百场日常活动，累计超1000人次参与。</li>
+                            <li><strong class="text-amber-600">最高荣誉：</strong>带领团队荣获年度校级“<strong>五星社团</strong>”，个人获“优秀社团负责人”。</li>
                         </ul>
                     </div>
 
-                    <!-- Additional Internships -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- CRCC -->
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-red-200 transition-all hover:-translate-y-1 group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors"><i class="fa-regular fa-building"></i></div>
-                                <h4 class="font-bold text-gray-900 text-base" data-i18n="crcc_name">中铁建房地产集团</h4>
-                            </div>
-                            <p class="text-[10px] text-gray-500 mb-2 bg-gray-50 inline-block px-2 py-0.5 rounded" data-i18n="crcc_role">党群工作部实习生 | 2023.09 - 2023.11</p>
-                            <p class="text-xs text-gray-600 leading-relaxed" data-i18n="crcc_desc">撰写领导发言稿/新闻稿 10+ 篇，协助开展“三会一课”，完成月度/季度工作总结。</p>
+                    <div class="bg-white/90 p-6 rounded-2xl shadow-sm border-l-4 border-red-500 hover:shadow-lg transition-all relative group">
+                        <div class="absolute top-4 right-4 opacity-10 text-6xl text-red-500"><i class="fa-solid fa-landmark"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">社会学院本科生党支部 <span class="text-sm font-normal text-gray-500 ml-2">党支书</span></h3>
+                        <p class="text-xs text-gray-400 mb-4 font-mono">2023.03 - 2024.05</p>
+                        <ul class="space-y-2 text-sm text-gray-600 relative z-10">
+                            <li><strong class="text-red-600">支部建设：</strong>强化党员发展与日常管理，推进“三会一课”与师生服务。</li>
+                            <li><strong class="text-red-600">最高荣誉：</strong>带领支部荣获年度校级最高荣誉“<strong>本科生样板党支部</strong>”。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ZJU -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-zju-blue border-b border-blue-100 pb-2 mb-4">浙江大学阶段</h3>
+                    <div class="bg-white/90 p-5 rounded-xl border border-gray-200 shadow-sm hover:border-zju-blue/30 transition-colors">
+                        <div class="flex justify-between">
+                            <p class="font-bold text-gray-900">研究生团总支组织部 副部长</p>
+                            <span class="text-xs text-gray-400">2024.09 - 2025.09</span>
                         </div>
-                        
-                        <!-- Leda Social Work -->
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-green-200 transition-all hover:-translate-y-1 group">
-                             <div class="flex items-center gap-3 mb-2">
-                                <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors"><i class="fa-solid fa-people-group"></i></div>
-                                <h4 class="font-bold text-gray-900 text-base" data-i18n="leda_name">武汉市乐达社工中心</h4>
-                            </div>
-                            <p class="text-[10px] text-gray-500 mb-2 bg-gray-50 inline-block px-2 py-0.5 rounded" data-i18n="leda_role">实习社工 | 2023.03 - 2023.07</p>
-                            <p class="text-xs text-gray-600 leading-relaxed" data-i18n="leda_desc">引导 100+ 新就业群体参与治理，搭建“风铃志愿服务队”，项目获“洪山区十大志愿项目”。</p>
+                    </div>
+                    <div class="bg-white/90 p-5 rounded-xl border border-gray-200 shadow-sm hover:border-zju-blue/30 transition-colors">
+                        <div class="flex justify-between">
+                            <p class="font-bold text-gray-900">丹青学园兼职辅导员</p>
+                            <span class="text-xs text-gray-400">2025.10 - 2026.10</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/90 p-5 rounded-xl border border-gray-200 shadow-sm hover:border-zju-blue/30 transition-colors">
+                        <div class="flex justify-between">
+                            <p class="font-bold text-gray-900">社工研究生党支部 组织委员</p>
+                            <span class="text-xs text-gray-400">2024.10 - 2025.10</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/90 p-5 rounded-xl border border-gray-200 shadow-sm hover:border-zju-blue/30 transition-colors">
+                        <div class="flex justify-between">
+                            <p class="font-bold text-gray-900">“彩虹人生”求是调研队成员</p>
+                            <span class="text-xs text-gray-400">2024.10 - 至今</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Research Section (Deep Purple Gradient) -->
-        <section id="research" class="py-16 relative overflow-hidden reveal">
-            <div class="absolute inset-0 bg-gradient-to-t from-purple-100/40 via-purple-50/20 to-white -z-10"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="w-1 h-10 bg-purple-600 rounded-full"></div>
-                    <div>
-                        <h2 class="text-3xl font-serif font-bold text-gray-900" data-i18n="sec_res_title">科研与竞赛</h2>
-                        <p class="text-[10px] text-purple-600/70 uppercase tracking-widest mt-1 font-bold" data-i18n="sec_res_sub">Analytical Thinking & Social Insight</p>
-                    </div>
+        <!-- 5. Social Practice (Interactive Cards) -->
+        <section id="practice" class="py-12 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="flex justify-between items-end mb-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-1.5 h-10 bg-green-600 rounded-full"></div>
+                    <h2 class="text-3xl font-serif font-bold text-gray-900">社会实践</h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Papers -->
-                    <div class="space-y-4">
-                         <h3 class="text-lg font-bold text-gray-800 border-b border-purple-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-book-open text-purple-600"></i> <span data-i18n="res_paper_title">学术成果</span></h3>
-                         <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">Writing</span>
-                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper1_t">《包容性社会治理》第五章</h4>
-                            <p class="text-[10px] text-gray-400 mb-2 font-mono">2024.11 - 2025.03 | 第一作者 | 专著章节</p>
-                            <p class="text-xs text-gray-600" data-i18n="paper1_d">负责全章撰写，展现深厚理论功底。</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">Analysis</span>
-                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper2_t">第二届社会研究年会：质性元分析</h4>
-                            <p class="text-[10px] text-gray-400 mb-2 font-mono">第一作者 | 会议论文</p>
-                            <p class="text-xs text-gray-600" data-i18n="paper2_d">探讨专业社会工作与街区权力关系。</p>
-                        </div>
-                         <div class="bg-white p-4 rounded-xl shadow-sm border border-purple-50 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-1 bg-purple-50 text-purple-700 border-purple-200 text-[10px]">National Project</span>
-                            <h4 class="font-bold text-base text-gray-900" data-i18n="paper3_t">国家社科基金：老幼同养服务研究</h4>
-                            <p class="text-[10px] text-gray-400 mb-0 font-mono">排序第四 | 2023.06</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Competitions -->
-                    <div class="space-y-4">
-                        <h3 class="text-lg font-bold text-gray-800 border-b border-red-100 pb-2 flex items-center gap-2"><i class="fa-solid fa-trophy text-red-600"></i> <span data-i18n="res_comp_title">竞赛荣誉</span></h3>
-                        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-1 bg-red-50 text-red-700 border-red-200 text-[10px]">Leadership</span>
-                            <h4 class="font-bold text-base text-gray-900" data-i18n="comp1_t">第十八届“挑战杯”红色专项</h4>
-                            <p class="text-xs font-bold text-red-600 mt-1">全国三等奖 | 排序第六</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-amber-500 hover:shadow-md transition-all">
-                            <span class="competency-tag mb-1 bg-amber-50 text-amber-700 border-amber-200 text-[10px]">Team Leader</span>
-                            <h4 class="font-bold text-base text-gray-900" data-i18n="comp2_t">第十八届“挑战杯”学术科技竞赛</h4>
-                            <p class="text-xs font-bold text-amber-600 mt-1">校级三等奖 | 排序第一</p>
-                            <p class="text-xs text-gray-600 mt-1" data-i18n="comp2_d">带领团队完成项目设计与路演，体现统筹协调能力。</p>
-                        </div>
-                    </div>
+                <span class="text-sm text-green-600 bg-green-50 px-3 py-1 rounded-full animate-pulse"><i class="fa-solid fa-arrow-pointer"></i> 点击查看详情</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div onclick="openModal('modal-p1')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-green-400 hover:shadow-lg transition-all relative">
+                    <span class="absolute top-4 right-4 text-xs font-bold bg-green-100 text-green-700 px-2 py-1 rounded">Team Leader</span>
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-700 transition-colors">浙大“黄土地计划”赴嘉善社会实践</h3>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">2025.07 | 团长</p>
+                    <p class="text-sm text-gray-600 line-clamp-2">带领团队赴嘉善开展调研，统筹安排行程与对接工作。</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="openModal('modal-p2')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-green-400 hover:shadow-lg transition-all relative">
+                    <span class="absolute top-4 right-4 text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">挂职锻炼</span>
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-700 transition-colors">浙江省文广旅厅办公室实践</h3>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">2025.01 - 04 | 浙大“彩虹人生”</p>
+                    <p class="text-sm text-gray-600 line-clamp-2">负责信访工作，日均处理百余份信访件，撰写体制机制分析报告。</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div onclick="openModal('modal-p3')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-green-400 hover:shadow-lg transition-all relative">
+                    <span class="absolute top-4 right-4 text-xs font-bold bg-red-100 text-red-700 px-2 py-1 rounded">Vice Captain</span>
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-700 transition-colors">北京大学 CHARLS 项目湖北队</h3>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">2022.07 - 08 | 副队长</p>
+                    <p class="text-sm text-gray-600 line-clamp-2">负责对接湖北两县政府，带领团队完成超百户村民访谈。</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="openModal('modal-p4')" class="group bg-white/90 cursor-pointer p-6 rounded-2xl border border-gray-200 hover:border-green-400 hover:shadow-lg transition-all relative">
+                    <span class="absolute top-4 right-4 text-xs font-bold bg-amber-100 text-amber-700 px-2 py-1 rounded">重点项目</span>
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-700 transition-colors">云南亦可妈库村“三下乡”调研</h3>
+                    <p class="text-sm text-gray-500 mt-2 mb-4">2021.07 - 08 | 核心成员</p>
+                    <p class="text-sm text-gray-600 line-clamp-2">深入彝族苗族村落，访谈50户，撰写民族团结政策报告。</p>
                 </div>
             </div>
         </section>
 
-        <!-- AI Charity Section (Revised Content & Interaction) -->
-        <section id="ai-demo" class="py-16 bg-gradient-to-b from-white to-gray-100 reveal">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="bg-gray-900 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-pink-500 opacity-10 rounded-full blur-3xl animate-pulse-slow"></div>
-                    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <span class="competency-tag bg-gray-800 border-gray-600 text-gray-300 text-[10px]"><i class="fa-solid fa-heart text-red-400 mr-1"></i> AI for Good</span>
-                            <h2 class="text-3xl font-serif font-bold mb-4 mt-3" data-i18n="ai_title">让我们一起努力为每一处不可见的角落里送出我们的小红花</h2>
-                            <p class="text-gray-300 mb-6 text-sm leading-relaxed" data-i18n="ai_desc">请在下方写下您对山区儿童的祝福。AI 将识别您的善意，并生成一朵数字小红花。</p>
-                            
-                            <!-- Counter Removed as requested -->
-
-                            <div class="bg-gray-800/50 backdrop-blur p-5 rounded-2xl border border-gray-700">
-                                <textarea id="ai-input" class="w-full bg-transparent text-white border-none focus:ring-0 placeholder-gray-500 text-sm resize-none" rows="2" placeholder="写下一句温暖的祝福..."></textarea>
-                                <div class="flex justify-between items-center mt-3 border-t border-gray-700 pt-3">
-                                    <span id="ai-status" class="text-xs font-mono text-gray-500 flex items-center gap-2"><span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready</span>
-                                    <button onclick="sendFlower()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-lg transform active:scale-95 transition-all" data-i18n="ai_btn">
-                                        送出祝福
-                                    </button>
+        <!-- 6. Internships & Honors -->
+        <section class="py-12 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="grid md:grid-cols-12 gap-12">
+                <!-- Internships (7 cols) -->
+                <div class="md:col-span-7 space-y-8">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-amber-500 rounded-full"></div>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900">实习经历</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-white/90 p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-gray-900">快手 (Kuaishou)</h3>
+                                <span class="bg-amber-50 text-amber-700 px-3 py-1 rounded text-xs font-bold">HRBP实习生</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-3 rounded-lg">
+                                    <p class="text-xs font-bold text-amber-700 mb-1">社招交付</p>
+                                    <p class="text-xs text-gray-600">日均筛选10+，产出Offer 12人，入职8人。</p>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-lg">
+                                    <p class="text-xs font-bold text-amber-700 mb-1">SOP沉淀</p>
+                                    <p class="text-xs text-gray-600">输出招聘全流程操作手册。</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Image Container: Starts Grayscale -->
-                        <div id="ai-bg-image" class="h-64 md:h-full bg-gray-800 rounded-xl relative overflow-hidden border border-gray-700 shadow-inner bg-[url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center grayscale transition-all duration-1000">
-                            <div class="absolute inset-0 bg-black/50"></div>
-                            <div class="absolute top-3 right-3 text-[10px] text-gray-300 font-mono border border-gray-500 px-2 py-0.5 rounded bg-black/50">Donation System: Active</div>
-                            <div id="flower-garden" class="absolute inset-0 pointer-events-none"></div>
+                        <div class="bg-white/90 p-6 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-gray-900">字节跳动</h3>
+                                <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded text-xs font-bold">人才交付</span>
+                            </div>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>累计一线待入职Offer <strong>47人</strong>，绩效Top 3。</li>
+                                <li>担任项目Owner，基于漏斗数据倒逼进度。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honors (5 cols) - Updated -->
+                <div class="md:col-span-5 space-y-8" id="honors">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-red-600 rounded-full"></div>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900">荣誉奖项</h2>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-red-100 shadow-sm hover:shadow-md transition-all">
+                            <h3 class="font-bold text-red-800 mb-3 flex items-center gap-2 text-lg"><i class="fa-solid fa-star"></i> 国家级</h3>
+                            <ul class="text-sm text-gray-700 space-y-2 pl-6 list-disc">
+                                <li>第十八届挑战杯全国三等奖</li>
+                                <li>2021《英语世界杯》全国二等奖</li>
+                                <li>国家励志奖学金</li> <!-- Back to normal list -->
+                            </ul>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all">
+                            <h3 class="font-bold text-blue-800 mb-3 flex items-center gap-2 text-lg"><i class="fa-solid fa-award"></i> 校级 & 社会</h3>
+                            <ul class="text-sm text-gray-700 space-y-2 pl-6 list-disc">
+                                <li>新生优秀奖学金 & 自强奖学金</li>
+                                <li>优秀共青团员 & 优秀学生干部</li>
+                                <li>玫瑰湾社区志愿服务项目金奖</li>
+                                <li>寒假社会实践优秀个人/优秀报告</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-white py-8 border-t border-gray-200 text-center">
-            <p class="text-zju-blue font-serif font-bold tracking-[0.2em] text-lg">GUO LINFENG</p>
-            <p class="text-[10px] text-gray-400 mt-2">Designed with ❤️ & Code | © 2025</p>
-            <button onclick="showCover()" class="mt-6 text-xs text-gray-500 hover:text-black underline transition-colors" data-i18n="back_cover">Back to Cover</button>
-        </footer>
+        <!-- 7. Volunteer Tab -->
+        <section id="volunteer" class="py-12 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/3 bg-slate-50 p-6 border-r border-gray-100">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">志愿项目一览</h3>
+                    <div class="space-y-2">
+                        <button onclick="showVol('blue')" id="btn-blue" class="w-full text-left p-3 rounded-lg text-sm font-medium bg-white shadow-md border-l-4 border-pink-500 transition-all">📮 “蓝信封”乡村通信</button>
+                        <button onclick="showVol('welfare')" id="btn-welfare" class="w-full text-left p-3 rounded-lg text-sm font-medium hover:bg-white transition-all">🏠 武汉儿童福利院</button>
+                        <button onclick="showVol('cloud')" id="btn-cloud" class="w-full text-left p-3 rounded-lg text-sm font-medium hover:bg-white transition-all">❄️ 迎冬奥云支教</button>
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-xs text-gray-400">总时长</p>
+                        <p class="text-2xl font-bold text-pink-500">161.9 <span class="text-sm text-gray-500">小时</span></p>
+                    </div>
+                </div>
+                <div class="md:w-2/3 p-8 flex items-center bg-white">
+                    <div id="vol-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. AI Blessing Demo -->
+        <section id="ai-demo" class="py-24 relative z-10 max-w-7xl mx-auto px-8">
+            <div class="bg-slate-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-pink-600 rounded-full blur-[120px] opacity-20 animate-pulse-slow"></div>
+                <div class="relative z-10 grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block">✨ AI for Good</span>
+                        <h2 class="text-4xl font-serif font-bold mb-6">让我们一起努力<br>为每一处不可见的角落<br>送出我们的小红花</h2>
+                        <p class="text-gray-400 mb-8 font-light">请在下方写下您对山区儿童的祝福。AI 将识别您的善意，点亮希望的花园。</p>
+                        <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
+                            <textarea id="ai-input" class="w-full bg-transparent text-white border-none focus:ring-0 placeholder-gray-500 text-lg resize-none" rows="2" placeholder="写下一句温暖的祝福..."></textarea>
+                            <div class="flex justify-between items-center mt-6 border-t border-white/10 pt-4">
+                                <span id="ai-status" class="text-sm font-mono text-gray-500 flex items-center gap-2"><span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready</span>
+                                <button onclick="sendFlower()" class="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white px-8 py-2 rounded-full font-bold shadow-lg transform active:scale-95 transition-all">送出祝福</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-80 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <div id="ai-bg-image" class="absolute inset-0 bg-cover bg-center grayscale transition-all duration-[2000ms]" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div id="flower-garden" class="absolute inset-0 pointer-events-none"></div>
+                        <div class="absolute top-4 right-4 text-xs font-mono text-white/50 border border-white/20 px-2 py-1 rounded">System: Online</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </div>
 
-    <!-- Scripts -->
+    <footer class="bg-slate-900 text-white py-12 text-center relative z-10">
+        <p class="font-serif text-xl tracking-[0.2em] mb-2">GUO LINFENG</p>
+        <p class="text-gray-500 text-sm">© 2025 Academic & Professional Portfolio</p>
+    </footer>
+
+    <!-- Modals Overlay -->
+    <div id="modal-overlay" class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300 opacity-0" onclick="closeModal()"></div>
+    
+    <!-- Research Modals -->
+    <div id="modal-1" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-purple-700 mb-2">第十八届“挑战杯”全国赛</h3>
+            <p class="text-gray-500 mb-6 border-b pb-4">新时代党的创新理论青年化阐释 | 核心成员</p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                <li>依据既有量表设计问卷，收集 <strong>1200份</strong> 有效问卷。</li>
+                <li>通过描述性统计分析、<strong>ologit回归模型</strong>搭建进行数据挖掘。</li>
+                <li>结合调研座谈会，分析现状与异质性，提出提升路径。</li>
+            </ul>
+        </div>
+    </div>
+    <div id="modal-2" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-purple-700 mb-2">国家社科基金一般项目</h3>
+            <p class="text-gray-500 mb-6 border-b pb-4">中国城乡社区老幼同养服务及干预研究 | 参与成员</p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                <li>以<strong>社会资本理论</strong>为支撑，实现从个人干预到社区干预的层次递增。</li>
+                <li>开展为期 <strong>21天</strong> 的社区服务，实现老幼代际互动。</li>
+                <li>孵化社区社会组织，为代际抚养领域提供政策倡导。</li>
+            </ul>
+        </div>
+    </div>
+    <div id="modal-3" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-purple-700 mb-2">学术专著</h3>
+            <p class="text-gray-500 mb-6 border-b pb-4">《包容性社会治理》第五章《社会参与篇》 | 第一作者</p>
+            <p class="text-gray-700 leading-relaxed">独立负责全章撰写。系统梳理了社会参与的理论脉络，结合实证案例分析了当前社会治理中公众参与的困境与路径。</p>
+        </div>
+    </div>
+
+    <!-- Social Practice Modals (New) -->
+    <div id="modal-p1" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-green-700 mb-2">浙大“黄土地计划”赴嘉善社会实践</h3>
+            <p class="text-gray-500 mb-4 border-b pb-4">2025.07 | 团长</p>
+            <div class="text-gray-700 space-y-3">
+                <p><strong>核心职责：</strong>作为团队负责人，统筹实践全流程，包括外联对接、行程安排、团队管理及报告撰写。</p>
+                <p><strong>成果：</strong>带领团队深入嘉善基层，开展调研走访。撰写高质量调研报告，展现浙大学子风采。</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-p2" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-green-700 mb-2">浙江省文广旅厅办公室实践</h3>
+            <p class="text-gray-500 mb-4 border-b pb-4">2025.01 - 04 | 挂职锻炼</p>
+            <div class="text-gray-700 space-y-3">
+                <p><strong>工作内容：</strong>日常负责信访工作，通过转信、现场接访等形式解决群众诉求。日均处理百余份信访件。</p>
+                <p><strong>成果：</strong>撰写《信访工作体制机制分析报告》，正进行学术转化。有效辅助了舆情监测与政策优化。</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-p3" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-green-700 mb-2">北大 CHARLS 项目湖北队</h3>
+            <p class="text-gray-500 mb-4 border-b pb-4">2022.07 - 08 | 副队长</p>
+            <div class="text-gray-700 space-y-3">
+                <p><strong>工作内容：</strong>负责对接湖北两县的政府办、卫健委及村委会。协调团队行程与后勤。</p>
+                <p><strong>成果：</strong>带领团队完成超百户村民的入户访谈及问卷调研，采集了高质量的老龄健康微观数据，助力国家数据库建设。</p>
+            </div>
+        </div>
+    </div>
+    <div id="modal-p4" class="modal fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl relative pointer-events-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-bold text-green-700 mb-2">云南亦可妈库村“三下乡”调研</h3>
+            <p class="text-gray-500 mb-4 border-b pb-4">2021.07 - 08 | 校级重点项目成员</p>
+            <div class="text-gray-700 space-y-3">
+                <p><strong>工作内容：</strong>深入云南亦可妈库村，同彝族苗族村民进行半结构化访谈（50户）。</p>
+                <p><strong>成果：</strong>撰写社会政策报告，论证产业结构调整与扶持保障政策对强化民族团结的正向效益。相关事迹被华中大官方公众号报道。</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // --- Translations Data ---
-        const translations = {
-            zh: {
-                name_br: "郭 林 峰",
-                // Added new label translation
-                portfolio_label: "学术与职业个人档案 | 2025",
-                name_simple: "郭林峰",
-                quote: "\"致力于公共价值创造与社会治理创新\"",
-                menu_btn: "菜单",
-                nav_edu: "教育背景",
-                nav_exp: "实习经历",
-                nav_res: "科研竞赛",
-                nav_lead: "学生工作",
-                nav_soc: "社会实践",
-                abstract_text: "融合社会科学视野与数据智能，致力于解决真实世界的复杂社会问题。",
-                hero_name: "郭林峰",
-                hero_title: "浙江大学 公共管理学院 | 2024级硕士研究生",
-                tag_exec: "⚡ 执行力 Max",
-                tag_acad: "📚 学术严谨",
-                tag_lead: "🤝 组织领导力",
-                sec_edu_title: "教育背景",
-                sec_edu_sub: "学术卓越与持续学习",
-                zju_name: "浙江大学",
-                zju_major: "公共管理学院 | 社会工作硕士",
-                loc_hz: "杭州 Hangzhou",
-                rank_label: "专业排名",
-                score_label: "加权平均分",
-                hust_name: "华中科技大学",
-                hust_major: "社会学院 (主修) & 经济学院 (双学位)",
-                loc_wh: "武汉 Wuhan",
-                sec_exp_title: "实习经历",
-                sec_exp_sub: "专业执行力与项目主理人意识",
-                ks_name: "快手 (Kuaishou)",
-                ks_role: "HRBP实习生 | 游戏业务中心",
-                ks_point1_t: "社招交付",
-                ks_point1_d: "独立负责核心岗。日均筛选 10+，产出Offer 12 人。",
-                ks_point2_t: "校招运营",
-                ks_point2_d: "主导 8 场线下双选会，建立渠道数据台账。",
-                bd_name: "字节跳动",
-                bd_role: "人才交付实习生 | 招聘中心",
-                bd_point1: "累计一线待入职 Offer 47 人，绩效排名实习生 Top 3。",
-                bd_point2: "担任项目 Owner，基于漏斗数据倒逼招聘进度，保障体验。",
-                crcc_name: "中铁建房地产集团",
-                crcc_role: "党群工作部实习生 | 2023.09 - 2023.11",
-                crcc_desc: "撰写领导发言稿/新闻稿 10+ 篇，协助开展“三会一课”，完成月度/季度工作总结。",
-                leda_name: "武汉市乐达社工中心",
-                leda_role: "实习社工 | 2023.03 - 2023.07",
-                leda_desc: "引导 100+ 新就业群体参与治理，搭建“风铃志愿服务队”，项目获“洪山区十大志愿项目”。",
-                sec_res_title: "科研与竞赛",
-                sec_res_sub: "分析思维与社会洞察",
-                res_paper_title: "学术成果",
-                res_comp_title: "竞赛荣誉",
-                paper1_t: "《包容性社会治理》第五章",
-                paper1_d: "2024.11-2025.03 | 第一作者 | 专著章节",
-                paper2_t: "第二届社会研究年会：质性元分析",
-                paper2_d: "探讨专业社会工作与街区权力关系。",
-                paper3_t: "国家社科基金：老幼同养服务研究",
-                comp1_t: "第十八届“挑战杯”红色专项",
-                comp2_t: "第十八届“挑战杯”学术科技竞赛",
-                comp2_d: "带领团队完成项目设计与路演，体现统筹协调能力。",
-                sec_lead_title: "学生工作",
-                lead_zju_title: "浙江大学阶段",
-                role_zju_1: "研究生团总支组织部副部长",
-                role_zju_2: "丹青学园兼职辅导员",
-                role_zju_3: "社工研究生党支部组织委员",
-                lead_hust_title: "华中科技大学阶段",
-                role_hust_1: "英语协会会长",
-                role_hust_1_d: "带领团队获年度最高荣誉，个人获“优秀社团负责人”。",
-                role_hust_2: "本科生党支部书记",
-                role_hust_2_d: "支部荣获年度最高荣誉“本科生样板党支部”。",
-                sec_soc_title: "社会实践",
-                soc_1: "浙大“黄土地计划”赴嘉善实践团团长",
-                soc_2: "浙江省文化广电旅游厅办公室实践",
-                soc_3: "四川广元支教 (微光公益)",
-                soc_4: "北大 CHARLS 项目湖北队",
-                ai_title: "让我们一起努力为每一处不可见的角落里送出我们的小红花",
-                ai_desc: "请在下方写下您对山区儿童的祝福。AI 将识别您的善意，并生成一朵数字小红花。",
-                ai_btn: "送出祝福",
-                back_cover: "返回封面"
-            },
-            en: {
-                name_br: "GUO<br>LIN<br>FENG",
-                name_simple: "GUO LINFENG",
-                // Added new label translation
-                portfolio_label: "ACADEMIC & PROFESSIONAL PORTFOLIO",
-                quote: "\"Dedication to Public Value & Social Innovation\"",
-                menu_btn: "Menu",
-                nav_edu: "Education",
-                nav_exp: "Experience",
-                nav_res: "Research",
-                nav_lead: "Leadership",
-                nav_soc: "Practice",
-                abstract_text: "Combining social science with data intelligence to solve real-world problems.",
-                hero_name: "Guo Linfeng",
-                hero_title: "Zhejiang University | Master of Public Administration (2024 Cohort)",
-                tag_exec: "⚡ High Execution",
-                tag_acad: "📚 Academic Rigor",
-                tag_lead: "🤝 Leadership",
-                sec_edu_title: "Education",
-                sec_edu_sub: "Academic Excellence & Continuous Learning",
-                zju_name: "Zhejiang University",
-                zju_major: "School of Public Affairs | Master of Social Work",
-                loc_hz: "Hangzhou",
-                rank_label: "Ranking",
-                score_label: "Weighted Avg",
-                hust_name: "HUST",
-                hust_major: "Sociology (Major) & Economics (Dual Degree)",
-                loc_wh: "Wuhan",
-                sec_exp_title: "Experience",
-                sec_exp_sub: "Professional Execution & Project Ownership",
-                ks_name: "Kuaishou",
-                ks_role: "HRBP Intern | Game Business Center",
-                ks_point1_t: "Recruitment",
-                ks_point1_d: "Owned core roles hiring. Screened 10+/day, 12 offers, 8 onboarded.",
-                ks_point2_t: "Operations",
-                ks_point2_d: "Led 8 offline job fairs, established data ledger for campus channels.",
-                bd_name: "ByteDance",
-                bd_role: "Talent Acquisition Intern",
-                bd_point1: "47 offers generated (Top 3 performance among interns).",
-                bd_point2: "Project Owner: Optimized hiring process based on data funnel.",
-                crcc_name: "CRCC Real Estate",
-                crcc_role: "Intern, Party & Mass Work Dept",
-                crcc_desc: "Drafted 10+ speeches/news releases. Assisted in organizational meetings.",
-                leda_name: "Leda Social Work Center",
-                leda_role: "Social Worker Intern",
-                leda_desc: "Guided 100+ participants in community governance. Founded 'Wind Chime' volunteer team.",
-                sec_res_title: "Research",
-                sec_res_sub: "Analytical Thinking & Social Insight",
-                res_paper_title: "Publications",
-                res_comp_title: "Competitions",
-                paper1_t: "Inclusive Social Governance: Ch.5",
-                paper1_d: "2024.11-2025.03 | 1st Author. Book Chapter.",
-                paper2_t: "2nd Social Research Annual Conf.",
-                paper2_d: "1st Author. Qualitative Meta-Analysis on Social Work & Power.",
-                paper3_t: "National Social Science Fund Project",
-                comp1_t: "18th Challenge Cup (Red Track)",
-                comp2_t: "18th Challenge Cup (Academic)",
-                comp2_d: "Team Leader. Managed project design and roadshow presentation.",
-                sec_lead_title: "Leadership",
-                lead_zju_title: "Zhejiang University",
-                role_zju_1: "Deputy Minister, Grad Youth League Org Dept",
-                role_zju_2: "Part-time Counselor (Danqing Academy)",
-                role_zju_3: "Org Committee, MSW Party Branch",
-                lead_hust_title: "HUST Phase",
-                role_hust_1: "President, English Association",
-                role_hust_1_d: "Led team to win '5-Star Club' award.",
-                role_hust_2: "Secretary, Undergraduate Party Branch",
-                role_hust_2_d: "Branch awarded 'Model Party Branch'.",
-                sec_soc_title: "Social Practice",
-                soc_1: "ZJU 'Yellow Earth' Practice (Team Leader)",
-                soc_2: "Zhejiang Dept of Culture & Tourism Intern",
-                soc_3: "Volunteer Teacher in Sichuan",
-                soc_4: "Peking Univ CHARLS Project (Vice Captain)",
-                ai_title: "Let's send our little red flowers to every invisible corner",
-                ai_desc: "Please write down your blessings for children in the mountains below. AI will recognize your goodwill and generate a digital little red flower.",
-                ai_btn: "Send Blessing",
-                back_cover: "Back to Cover"
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav', 'py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('glass-nav', 'py-2');
+                nav.classList.add('py-4');
             }
-        };
-
-        let currentLang = 'zh';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'zh' ? 'en' : 'zh';
-            updateLanguage();
-        }
-
-        function updateLanguage() {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    if(key === 'name_br' || key === 'bd_point1' || key === 'bd_point2') {
-                        el.innerHTML = translations[currentLang][key];
-                    } else {
-                        el.innerText = translations[currentLang][key];
-                    }
-                }
-            });
-        }
-
-        // --- Navigation & UI Logic ---
-        function enterPortfolio(sectionId) {
-            const cover = document.getElementById('cover-page');
-            const content = document.getElementById('main-content');
-            
-            cover.classList.add('hidden-slide');
-            content.classList.add('visible');
-            
-            setTimeout(() => {
-                if (sectionId) {
-                    const el = document.getElementById(sectionId);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 600);
-        }
-
-        function showCover() {
-            const cover = document.getElementById('cover-page');
-            const content = document.getElementById('main-content');
-            
-            cover.classList.remove('hidden-slide');
-            content.classList.remove('visible');
-            window.scrollTo(0, 0);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            const checkReveal = () => {
-                const trigger = window.innerHeight * 0.85;
-                reveals.forEach(el => {
-                    const top = el.getBoundingClientRect().top;
-                    if (top < trigger) el.classList.add('active');
-                });
-            };
-            window.addEventListener('scroll', checkReveal);
-            checkReveal();
         });
 
-        // --- AI Demo Logic (Counter Removed) ---
+        function openModal(id) {
+            document.getElementById('modal-overlay').classList.remove('hidden');
+            setTimeout(() => document.getElementById('modal-overlay').classList.remove('opacity-0'), 10);
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('opacity-0');
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+            setTimeout(() => document.getElementById('modal-overlay').classList.add('hidden'), 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        const volData = {
+            'blue': { title: '“蓝信封”乡村儿童书信志愿者', role: '通信大使', content: '通过书信往来的方式，陪伴乡村留守儿童成长。每月一封信，倾听他们的烦恼与快乐，提供心理支持与情感引导。', tag: '❤️ 长期陪伴' },
+            'welfare': { title: '武汉儿童福利院爱心辅导', role: '爱心教师', content: '定期前往武汉儿童福利院，为孤残儿童提供学业辅导和心理陪伴。设计趣味课程，帮助孩子们建立自信。', tag: '🏠 关爱特殊群体' },
+            'cloud': { title: '迎冬奥云支教', role: '云支教志愿者', content: '响应冬奥号召，通过线上平台为偏远地区儿童普及冬奥知识，开展体育文化教育，拓宽孩子们的视野。', tag: '❄️ 线上教育' }
+        };
+
+        function showVol(key) {
+            const data = volData[key];
+            const container = document.getElementById('vol-content');
+            document.querySelectorAll('#volunteer button').forEach(btn => {
+                btn.className = "w-full text-left p-3 rounded-lg text-sm font-medium hover:bg-white transition-all";
+            });
+            document.getElementById('btn-' + key).className = "w-full text-left p-3 rounded-lg text-sm font-medium bg-white shadow-md border-l-4 border-pink-500 transition-all";
+            container.innerHTML = `
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">${data.title}</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">角色：${data.role}<br>${data.content}</p>
+                    <span class="bg-pink-50 text-pink-700 px-3 py-1 rounded text-xs font-bold">${data.tag}</span>
+                </div>
+            `;
+        }
+        // Initialize default view
+        showVol('blue');
+
         function sendFlower() {
             const input = document.getElementById('ai-input');
             const status = document.getElementById('ai-status');
             const garden = document.getElementById('flower-garden');
-            const bgImage = document.getElementById('ai-bg-image'); // Get the background image element
-            
+            const bgImage = document.getElementById('ai-bg-image');
             if (!input.value.trim()) {
-                status.innerHTML = currentLang === 'zh' ? '<span class="text-red-400">请输入祝福内容...</span>' : '<span class="text-red-400">Please input a blessing...</span>';
+                status.innerHTML = '<span class="text-red-400">内容为空...</span>';
                 return;
             }
-            
-            status.innerHTML = currentLang === 'zh' ? '<span class="text-amber-400 animate-pulse">AI 识别祝福中...</span>' : '<span class="text-amber-400 animate-pulse">Processing blessing...</span>';
-
+            status.innerHTML = '<span class="text-amber-400 animate-pulse">AI 正在识别善意...</span>';
             setTimeout(() => {
-                status.innerHTML = currentLang === 'zh' ? '<span class="text-green-400">祝福已送达，小红花+1</span>' : '<span class="text-green-400">Sent! Flower +1</span>';
-                
-                // Remove grayscale from background image to "light it up"
+                status.innerHTML = '<span class="text-green-400">祝福已送达！</span>';
                 bgImage.classList.remove('grayscale');
-                bgImage.classList.add('grayscale-0');
-
-                // Visual Effect
                 const flower = document.createElement('div');
-                flower.innerText = '🌺';
-                flower.style.position = 'absolute';
-                flower.style.fontSize = '3rem';
-                flower.style.left = Math.random() * 80 + 10 + '%';
-                flower.style.bottom = '-20px';
-                flower.style.transition = 'all 2.5s ease-out';
-                flower.style.opacity = '0';
-                flower.style.filter = 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))';
-                
+                flower.innerText = ['🌸','🌺','🌻','🌹'][Math.floor(Math.random()*4)];
+                flower.className = "absolute text-4xl transition-all duration-[3000ms] ease-out opacity-0 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]";
+                flower.style.left = (20 + Math.random() * 60) + '%';
+                flower.style.bottom = '10%';
                 garden.appendChild(flower);
-                
                 requestAnimationFrame(() => {
-                    flower.style.transform = 'translateY(-200px) scale(1.5) rotate(' + (Math.random() * 30 - 15) + 'deg)';
+                    flower.style.bottom = (40 + Math.random() * 40) + '%';
                     flower.style.opacity = '1';
+                    flower.style.transform = `scale(${1 + Math.random()}) rotate(${Math.random()*30 - 15}deg)`;
                 });
-                
                 setTimeout(() => {
                     flower.style.opacity = '0';
                     setTimeout(() => flower.remove(), 1000);
-                }, 2000);
-                
-                input.value = "";
-                
-                setTimeout(() => {
-                    status.innerHTML = '<span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready';
                 }, 3000);
-            }, 800);
+                input.value = "";
+                setTimeout(() => { status.innerHTML = '<span class="w-2 h-2 bg-gray-600 rounded-full"></span> Ready'; }, 3000);
+            }, 1000);
         }
     </script>
 </body>
